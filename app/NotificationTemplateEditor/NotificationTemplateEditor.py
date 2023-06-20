@@ -25,23 +25,23 @@ def download_defaultTemplates():
     data = [{
         'formid': 1,
         'exportFolderBase': f'{basepath}\DefaultExportFolder',
-        'mainFolderLocation': fr'{basepath}\NotificationTemplateEditor\static\DefaultTemplates',
+        'mainFolderLocation': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates',
         'fields': [request.form.to_dict()],
         'tickets': {
             'CheckboxKey': 'Ticket_CheckBox',
-            'BaseTemplateFolder': fr'{basepath}\NotificationTemplateEditor\static\DefaultTemplates\TicketTemplates',
+            'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates\TicketTemplates',
             'ExportFolder': fr'{basepath}\DefaultExportFolder\TicketTemplates'
 
         },
         'knowledgebase': {
             'CheckboxKey': 'KB_CheckBox',
-            'BaseTemplateFolder': fr'{basepath}\NotificationTemplateEditor\static\DefaultTemplates\KBTemplates',
+            'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates\KBTemplates',
             'ExportFolder': fr'{basepath}\DefaultExportFolder\KnowledgebaseTemplates'
 
         },
         'projects': {
             'CheckboxKey': 'Project_CheckBox',
-            'BaseTemplateFolder': fr'{basepath}\NotificationTemplateEditor\static\DefaultTemplates\ProjectTemplates',
+            'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates\ProjectTemplates',
             'ExportFolder': fr'{basepath}\DefaultExportFolder\ProjectTemplates'
 
         }
@@ -55,14 +55,17 @@ def download_defaultTemplates():
             index = data.index(object)
             break
 
-    #Need to add section that verifies that no export folder exists and if it does delete it
-    export_folder_to_remove = data[index]['exportFolderBase']
-    if os.path.exists(export_folder_to_remove):
+    #Gets the desired export folder and checks to see if it already exists, if it does delete it, and if it does not create it
+    export_folder = data[index]['exportFolderBase']
+    if os.path.exists(export_folder):
         try:
-            shutil.rmtree(export_folder_to_remove)
+            shutil.rmtree(export_folder)
         except:
             pass
         return download_defaultTemplates()
+    else:
+        os.mkdir(export_folder)
+
 
 
 
@@ -71,15 +74,43 @@ def download_defaultTemplates():
     if data[index]['tickets']['CheckboxKey'] in request.form.to_dict():
         get_ticket_templates(data[index]['tickets']['BaseTemplateFolder'], data[index]['exportFolderBase'], data[index]['tickets']['ExportFolder'], request.form.to_dict())
 
+    if data[index]['knowledgebase']['CheckboxKey'] in request.form.to_dict():
+        get_kb_templates(data[index]['knowledgebase']['BaseTemplateFolder'], data[index]['exportFolderBase'], data[index]['knowledgebase']['ExportFolder'], request.form.to_dict())
+
+    if data[index]['projects']['CheckboxKey'] in request.form.to_dict():
+        get_project_templates(data[index]['projects']['BaseTemplateFolder'], data[index]['exportFolderBase'], data[index]['projects']['ExportFolder'], request.form.to_dict())
+
 
     return True
 
+
+#Working Direcvtory is Base Template Folder contains where base ticket templates exists this is source
+#baseExportDirectory is the directory where I should
+#Destination will be the Ticket Export Directory
+#Fields will be used for the find/replace in the new exported directory
 def get_ticket_templates(workingDirectory, baseExportDirectory, TicketExportDirectory,fields):
+
     print(workingDirectory, baseExportDirectory, TicketExportDirectory, fields)
+    shutil.copytree(src=workingDirectory, dst= TicketExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
+                    ignore_dangling_symlinks=False, dirs_exist_ok=False)
+
     pass
 
 
+def get_kb_templates(workingDirectory, baseExportDirectory, TicketExportDirectory,fields):
 
+    print(workingDirectory, baseExportDirectory, TicketExportDirectory, fields)
+    shutil.copytree(src=workingDirectory, dst= TicketExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
+                    ignore_dangling_symlinks=False, dirs_exist_ok=False)
+
+    pass
+def get_project_templates(workingDirectory, baseExportDirectory, TicketExportDirectory,fields):
+
+    print(workingDirectory, baseExportDirectory, TicketExportDirectory, fields)
+    shutil.copytree(src=workingDirectory, dst= TicketExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
+                    ignore_dangling_symlinks=False, dirs_exist_ok=False)
+
+    pass
 
 
 
