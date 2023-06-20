@@ -21,21 +21,66 @@ def getHome():
 
 @NotificationEditor.route("/DownloadDefaultTemplates", methods=["POST"])
 def download_defaultTemplates():
-    print(request.form.to_dict())
-    basePath = os.getcwd()
-    print(basePath)
+    basepath = os.getcwd()
+    data = [{
+        'formid': 1,
+        'exportFolderBase': f'{basepath}\DefaultExportFolder',
+        'mainFolderLocation': fr'{basepath}\NotificationTemplateEditor\static\DefaultTemplates',
+        'fields': [request.form.to_dict()],
+        'tickets': {
+            'CheckboxKey': 'Ticket_CheckBox',
+            'BaseTemplateFolder': fr'{basepath}\NotificationTemplateEditor\static\DefaultTemplates\TicketTemplates',
+            'ExportFolder': fr'{basepath}\DefaultExportFolder\TicketTemplates'
+
+        },
+        'knowledgebase': {
+            'CheckboxKey': 'KB_CheckBox',
+            'BaseTemplateFolder': fr'{basepath}\NotificationTemplateEditor\static\DefaultTemplates\KBTemplates',
+            'ExportFolder': fr'{basepath}\DefaultExportFolder\KnowledgebaseTemplates'
+
+        },
+        'projects': {
+            'CheckboxKey': 'Project_CheckBox',
+            'BaseTemplateFolder': fr'{basepath}\NotificationTemplateEditor\static\DefaultTemplates\ProjectTemplates',
+            'ExportFolder': fr'{basepath}\DefaultExportFolder\ProjectTemplates'
+
+        }
+
+    }
+
+    ]
+    index = None
+    for object in data:
+        if int(object['formid']) == int(request.args['formid']):
+            index = data.index(object)
+            break
+
+    #Need to add section that verifies that no export folder exists and if it does delete it
+    export_folder_to_remove = data[index]['exportFolderBase']
+    if os.path.exists(export_folder_to_remove):
+        try:
+            shutil.rmtree(export_folder_to_remove)
+        except:
+            pass
+        return download_defaultTemplates()
+
+
+
+
+
+    if data[index]['tickets']['CheckboxKey'] in request.form.to_dict():
+        get_ticket_templates(data[index]['tickets']['BaseTemplateFolder'], data[index]['exportFolderBase'], data[index]['tickets']['ExportFolder'], request.form.to_dict())
+
 
     return True
 
-@NotificationEditor.route("/DownloadCustom1Templates", methods=["POST"])
-def download_custom1_template():
-    print(request.form.to_dict())
+def get_ticket_templates(workingDirectory, baseExportDirectory, TicketExportDirectory,fields):
+    print(workingDirectory, baseExportDirectory, TicketExportDirectory, fields)
+    pass
 
-    return True
-@NotificationEditor.route("/DownloadCustom2Templates", methods=["POST"])
-def download_custom2_template():
-    print(request.form.to_dict())
 
-    return True
+
+
+
 
 

@@ -84,7 +84,7 @@
                <h2>Custom Template #1</h2>
                <br>
                <p style="font-weight: bolder">Click on one of the color pickers, either paste the color code or use the <br>eye dropper tool to alter the color for the corresponding sections on the template.</p>
-               <form method="post" action="{{url_for('NotificationEditor.download_custom1_template',formid=2)}}">
+               <form method="post" action="{{url_for('NotificationEditor.download_defaultTemplates',formid=2)}}">
                   <div class="QuestionGroup">
                      <label for="consolidated_Header1" class="form-label">Header 1 Color (Refers to "Comment" and "Incident Details")</label>
                      <p id="consolidated_Header1_txtvalue"></p>
@@ -125,7 +125,7 @@
                <h2>Custom Ticket Template #2</h2>
                <br>
                <p style="font-weight: bolder">Click on one of the color pickers, either paste the color code or use the <br>eye dropper tool to alter the color for the corresponding sections on the template.</p>
-               <form method="post" action="{{url_for('NotificationEditor.download_custom2_template',formid=3)}}" id="custom2_template_editor_form">
+               <form method="post" action="{{url_for('NotificationEditor.download_defaultTemplates',formid=3)}}" id="custom2_template_editor_form">
                   <div class="QuestionGroup">
                      <div class="row g-3">
                         <div class="col">
