@@ -1,0 +1,98 @@
+body .sidenav{
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    background-color: #ebe9f5;
+    padding-left: 8px;
+    padding-bottom: 6px;
+    overflow: hidden;
+    padding-top: 15px;
+
+}
+/*Anchors on Side Nav*/
+body .sidenav a{
+    padding: 10px 8px 10px 16px;
+    color: #8332a7;
+    display: block;
+    border: none;
+    background: none;
+    width: 95%;
+    text-align: left;
+    cursor: pointer;
+
+
+}
+/*Anchor Hover*/
+body .sidenav a:hover{
+    padding: 10px 10px 10px 16px;
+    margin-right: 10px;
+    background: #c6b6da;
+    border-radius: 50px 50px 50px 50px;
+}
+/*Main Body to right of side nav*/
+body .template-main-content-body{
+    margin-left: 300px;
+    padding: 20px
+}
+/*Main Body to right of side nav*/
+body .template-information-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/*This is the left section of the main body*/
+body .template-information-list>.template-edit{
+    flex: 1 1 50%;
+    min-width:300px;
+    padding: 10px 30px 10px 10px;
+    border-top: #5e5e5e solid 1px;
+    overflow-wrap: break-word;
+    margin-bottom: 50px;
+}
+
+
+/*This is the column that contains code samples*/
+body .template-information-list>.template-preview{
+flex: 1 1 50%;
+background-color: #ffffff;
+border-left: #2b72af 2px solid;
+border-top: #2b72af 2px solid;
+color: #000000;
+padding: 10px 10px 10px 10px;
+min-width:400px;
+
+}
+
+body .template-preview{
+    border-top: #5e5e5e solid 1px;
+    border-left: #5e5e5e solid 1px;
+    padding: 20px;
+
+}
+
+form .QuestionGroup{
+    margin: 40px;
+}
+
+.QuestionGroup label {
+    font-weight: bolder;
+}
+.form-label{
+    margin-bottom: 0px !important;
+}
+
+.required:before{
+    content: "* ";
+    color: red;
+
+}
+
+.sidenav img{
+    padding: 6px 8px 6px 16px;
+    width: 25%;
+}
+.titleText{
+    color: #8332a7;
+    font-size: 100%;
+    font-weight: bolder;
+}
