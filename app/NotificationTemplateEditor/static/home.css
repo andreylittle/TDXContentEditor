@@ -96,3 +96,9 @@ form .QuestionGroup{
     font-size: 100%;
     font-weight: bolder;
 }
+
+#changeLog{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}

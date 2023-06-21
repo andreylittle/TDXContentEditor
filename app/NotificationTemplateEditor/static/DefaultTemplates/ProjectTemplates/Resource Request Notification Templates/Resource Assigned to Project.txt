@@ -4,10 +4,10 @@
     <tr>
         <td>
             <table cellpadding="5" cellspacing="0" border="0"
-                   style="width: 100%; border: 1px solid [BORDER COLOR]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+                   style="width: 100%; border: 1px solid [TableColor]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
                 <!--Header-->
                 <tr>
-                    <td style="font-size: 19px; font-weight: bold; color: [H1 COLOR]; background-color: [BORDER COLOR];">Details
+                    <td style="font-size: 19px; font-weight: bold; color: [Header1Color]; background-color: [TableColor];">Details
                     </td>
                 </tr>
                 <!--Content-->
@@ -27,16 +27,16 @@
     <tr>
         <td>
             <table cellpadding="5" cellspacing="0" border="0"
-                   style="width: 100%; border: 1px solid [BORDER COLOR]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+                   style="width: 100%; border: 1px solid [TableColor]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
                 <!--Header-->
                 <tr>
-                    <td style="font-size: 19px; font-weight: bold; color: [H1 COLOR]; background-color: [BORDER COLOR];">Resource
+                    <td style="font-size: 19px; font-weight: bold; color: [Header1Color]; background-color: [TableColor];">Resource
                         Request Details
                     </td>
                 </tr>
                 <!--Project-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px;">ID
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px;">ID
                     </td>
                 </tr>
                 <tr>
@@ -45,7 +45,7 @@
                 </tr>
                 <!--Project-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Project
                     </td>
                 </tr>
@@ -55,7 +55,7 @@
                 </tr>
                 <!--Created-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Created
                     </td>
                 </tr>
@@ -65,7 +65,7 @@
                 </tr>
                 <!--Approver-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Approver
                     </td>
                 </tr>
@@ -75,7 +75,7 @@
                 </tr>
                 <!--Status-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Status
                     </td>
                 </tr>
@@ -85,7 +85,7 @@
                 </tr>
                 <!--Selected Person-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Selected Person
                     </td>
                 </tr>
@@ -95,7 +95,7 @@
                 </tr>
                 <!--Requested Person-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Requested Person
                     </td>
                 </tr>
@@ -105,7 +105,7 @@
                 </tr>
                 <!--Requested Role-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Requested Role
                     </td>
                 </tr>
@@ -116,7 +116,7 @@
                 {{#Description}}
                 <!--Description-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Description
                     </td>
                 </tr>

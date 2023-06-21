@@ -4,10 +4,10 @@
     <tr>
         <td>
             <table cellpadding="5" cellspacing="0" border="0"
-                   style="width: 100%; border: 1px solid [BORDER COLOR]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+                   style="width: 100%; border: 1px solid [TableColor]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
                 <!--Header-->
                 <tr>
-                    <td style="font-size: 19px; font-weight: bold; color: [H1 COLOR]; background-color: [BORDER COLOR];">Details
+                    <td style="font-size: 19px; font-weight: bold; color: [Header1Color]; background-color: [TableColor];">Details
                     </td>
                 </tr>
                 <!--Content-->

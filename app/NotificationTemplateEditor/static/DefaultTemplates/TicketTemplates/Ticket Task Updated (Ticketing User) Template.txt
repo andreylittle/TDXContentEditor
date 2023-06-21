@@ -4,10 +4,10 @@
     <tr>
         <td>
             <table cellpadding="5" cellspacing="0" border="0"
-                   style="width: 100%; border: 1px solid [BORDER COLOR]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+                   style="width: 100%; border: 1px solid [TableColor]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
                 <!--Header-->
                 <tr>
-                    <td style="font-size: 19px; font-weight: bold; color: [H1 COLOR]; background-color: [BORDER COLOR];">{{TaskTypeName}}
+                    <td style="font-size: 19px; font-weight: bold; color: [Header1Color]; background-color: [TableColor];">{{TaskTypeName}}
                         Update
                     </td>
                 </tr>
@@ -30,16 +30,16 @@
     <tr>
         <td>
             <table cellpadding="5" cellspacing="0" border="0"
-                   style="width: 100%; border: 1px solid [BORDER COLOR]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+                   style="width: 100%; border: 1px solid [TableColor]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
                 <!--Header-->
                 <tr>
-                    <td style="font-size: 19px; font-weight: bold; color: [H1 COLOR]; background-color: [BORDER COLOR];">{{TaskTypeName}}
+                    <td style="font-size: 19px; font-weight: bold; color: [Header1Color]; background-color: [TableColor];">{{TaskTypeName}}
                         Details
                     </td>
                 </tr>
                 <!--ID-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px;">ID
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px;">ID
                     </td>
                 </tr>
                 <tr>
@@ -48,7 +48,7 @@
                 </tr>
                 <!--Title-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Title
                     </td>
                 </tr>
@@ -59,7 +59,7 @@
                 {{#TaskDescription}}
                 <!--Description-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Description
                     </td>
                 </tr>
@@ -71,7 +71,7 @@
             TaskDescription}}
                 <!--Ticket ID-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         {{ClassificationName}} ID
                     </td>
                 </tr>
@@ -81,7 +81,7 @@
                 </tr>
                 <!--Ticket Title-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         {{ClassificationName}}
                     </td>
                 </tr>
@@ -91,7 +91,7 @@
                 </tr>
                 <!--Created By-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Created By
                     </td>
                 </tr>
@@ -101,7 +101,7 @@
                 </tr>
                 <!--Date Created-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Date Created
                     </td>
                 </tr>
@@ -112,7 +112,7 @@
                 {{#TaskModifiedDate}}
                 <!--Date Modified-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Date Modified
                     </td>
                 </tr>
@@ -126,7 +126,7 @@
                 {{#TaskStartDate}}
                 <!--Start Date-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Start Date
                     </td>
                 </tr>
@@ -139,7 +139,7 @@
                 {{#TaskEndDate}}
                 <!--End Date-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         End Date
                     </td>
                 </tr>
@@ -151,7 +151,7 @@
             TaskEndDate}}
                 <!--Percent Complete-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Percent Complete
                     </td>
                 </tr>
@@ -162,7 +162,7 @@
                 {{#TaskCompletedFullName}}
                 <!--Completed By-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Completed By
                     </td>
                 </tr>
@@ -176,7 +176,7 @@
             TaskIsActive}}
                 <!--Est Hours-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Est Hours
                     </td>
                 </tr>
@@ -187,7 +187,7 @@
                 {{#TaskPredecessorName}}
                 <!--Predecessor-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Predecessor
                     </td>
                 </tr>
@@ -200,7 +200,7 @@
                 {{#TaskResponsibleName}}
                 <!--Responsibility-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Responsibility
                     </td>
                 </tr>
@@ -213,7 +213,7 @@
                 {{#TaskResponsibleGroupName}}
                 <!--Responsible Group-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Responsible Group
                     </td>
                 </tr>
@@ -225,7 +225,7 @@
             TaskResponsibleGroupName}}
                 <!--TDNext Tickets-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         TDNext Tickets
                     </td>
                 </tr>
@@ -236,7 +236,7 @@
                 </tr>
                 <!--TDMobile-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         TDMobile
                     </td>
                 </tr>
@@ -247,7 +247,7 @@
                 </tr>
                 <!--TDClient-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         TDClient
                     </td>
                 </tr>
@@ -258,7 +258,7 @@
                 </tr>
                 <!--Task-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         {{TaskTypeName}}
                     </td>
                 </tr>

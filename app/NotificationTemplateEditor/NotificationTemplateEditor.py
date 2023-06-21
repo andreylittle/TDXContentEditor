@@ -18,41 +18,71 @@ def getHome():
 
 
     return render_template("defaultTemplateEditor.html", default_template_preview=DefaultTemplate.read(), custom1_template_preview=customTemplate1.read(),custom2_template_preview=customTemplate2.read()  )
-
+@NotificationEditor.route('/ChangeLog', methods=["GET"])
+def getChangeLog():
+    render_template('changelog.html')
 @NotificationEditor.route("/DownloadDefaultTemplates", methods=["POST"])
 def download_defaultTemplates():
     basepath = os.getcwd()
-    data = [{
-        'formid': 1,
-        'exportFolderBase': f'{basepath}\DefaultExportFolder',
-        'mainFolderLocation': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates',
-        'fields': [request.form.to_dict()],
-        'tickets': {
-            'CheckboxKey': 'Ticket_CheckBox',
-            'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates\TicketTemplates',
-            'ExportFolder': fr'{basepath}\DefaultExportFolder\TicketTemplates'
+    data = [
+        {
+            'formid': 1,
+            'exportFolderBase': f'{basepath}\DefaultExportFolder',
+            'zipFilePath':'./DefaultExportFolder/',
+            'mainFolderLocation': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates',
+            'fields': [request.form.to_dict()],
+            'tickets': {
+                'CheckboxKey': 'Ticket_CheckBox',
+                'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates\TicketTemplates',
+                'ExportFolder': fr'{basepath}\DefaultExportFolder\TicketTemplates'
+            },
+            'knowledgebase': {
+                'CheckboxKey': 'KB_CheckBox',
+                'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates\KBTemplates',
+                'ExportFolder': fr'{basepath}\DefaultExportFolder\KnowledgebaseTemplates'
+
+            },
+            'projects': {
+                'CheckboxKey': 'Project_CheckBox',
+                'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates\ProjectTemplates',
+                'ExportFolder': fr'{basepath}\DefaultExportFolder\ProjectTemplates'
+
+            }
 
         },
-        'knowledgebase': {
-            'CheckboxKey': 'KB_CheckBox',
-            'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates\KBTemplates',
-            'ExportFolder': fr'{basepath}\DefaultExportFolder\KnowledgebaseTemplates'
+        {
+            'formid': 2,
+            'exportFolderBase': f'{basepath}\Custom1ExportFolder',
+            'zipFilePath':'./Custom1ExportFolder/',
+            'mainFolderLocation': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom1Templates',
+            'fields': [request.form.to_dict()],
+            'tickets': {
+                'CheckboxKey': 'consolidated_Ticket_CheckBox',
+                'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom1Templates\TicketTemplates',
+                'ExportFolder': fr'{basepath}\Custom1ExportFolder\TicketTemplates'
 
-        },
-        'projects': {
-            'CheckboxKey': 'Project_CheckBox',
-            'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates\ProjectTemplates',
-            'ExportFolder': fr'{basepath}\DefaultExportFolder\ProjectTemplates'
+            },
+            'knowledgebase': {
+                'CheckboxKey': 'consolidated_knowledgebase_CheckBox',
+                'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom1Templates\KnowledgebaseTemplates',
+                'ExportFolder': fr'{basepath}\Custom1ExportFolder\KnowledgebaseTemplates'
+
+            },
+            'projects': {
+                'CheckboxKey': 'consolidated_project_CheckBox',
+                'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom1Templates\ProjectTemplates',
+                'ExportFolder': fr'{basepath}\Custom1ExportFolder\ProjectTemplates'
+
+            }
 
         }
-
-    }
 
     ]
     index = None
     for object in data:
         if int(object['formid']) == int(request.args['formid']):
             index = data.index(object)
+            print(object)
             break
 
     #Gets the desired export folder and checks to see if it already exists, if it does delete it, and if it does not create it
@@ -81,34 +111,96 @@ def download_defaultTemplates():
         get_project_templates(data[index]['projects']['BaseTemplateFolder'], data[index]['exportFolderBase'], data[index]['projects']['ExportFolder'], request.form.to_dict())
 
 
-    return True
+
+
+    base_path2 = pathlib.Path(data[index]['zipFilePath'])
+    data = io.BytesIO()
+
+    with zipfile.ZipFile(data, mode='w') as z:
+        for folder in base_path2.iterdir():
+            # print(folder)
+            z.write(folder)
+            for file in folder.iterdir():
+                try:
+                    for subFile in file.iterdir():
+                        z.write(subFile)
+                except:
+                    pass
+                # print(file)
+                z.write(file)
+
+    data.seek(0)
+    return send_file(
+        data,
+        mimetype='application/zip',
+        as_attachment=True,
+        download_name="ExportFolder" + '.zip'
+    )
 
 
 #Working Direcvtory is Base Template Folder contains where base ticket templates exists this is source
 #baseExportDirectory is the directory where I should
 #Destination will be the Ticket Export Directory
 #Fields will be used for the find/replace in the new exported directory
-def get_ticket_templates(workingDirectory, baseExportDirectory, TicketExportDirectory,fields):
+def get_ticket_templates(workingDirectory, baseExportDirectory, MainExportDirectory,fields):
 
-    print(workingDirectory, baseExportDirectory, TicketExportDirectory, fields)
-    shutil.copytree(src=workingDirectory, dst= TicketExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
+    print(workingDirectory, baseExportDirectory, MainExportDirectory, fields)
+    shutil.copytree(src=workingDirectory, dst= MainExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
                     ignore_dangling_symlinks=False, dirs_exist_ok=False)
+    all_files = os.listdir(MainExportDirectory)
+
+    for file in all_files:
+        FilePath = os.path.join(MainExportDirectory,file)
+        with open(FilePath, "r") as file:
+            data = file.read()
+            for key, value in fields.items():
+                data = data.replace(f'[{key}]', value)
+        with open(FilePath, "w") as file:
+            file.write(data)
+
 
     pass
 
 
-def get_kb_templates(workingDirectory, baseExportDirectory, TicketExportDirectory,fields):
+def get_kb_templates(workingDirectory, baseExportDirectory, MainExportDirectory,fields):
 
-    print(workingDirectory, baseExportDirectory, TicketExportDirectory, fields)
-    shutil.copytree(src=workingDirectory, dst= TicketExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
+    print(workingDirectory, baseExportDirectory, MainExportDirectory, fields)
+    shutil.copytree(src=workingDirectory, dst= MainExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
                     ignore_dangling_symlinks=False, dirs_exist_ok=False)
 
+    all_files = os.listdir(MainExportDirectory)
+
+    for file in all_files:
+        FilePath = os.path.join(MainExportDirectory, file)
+        with open(FilePath, "r") as file:
+            data = file.read()
+            for key, value in fields.items():
+                data = data.replace(f'[{key}]', value)
+        with open(FilePath, "w") as file:
+            file.write(data)
     pass
-def get_project_templates(workingDirectory, baseExportDirectory, TicketExportDirectory,fields):
+def get_project_templates(workingDirectory, baseExportDirectory, MainExportDirectory,fields):
 
-    print(workingDirectory, baseExportDirectory, TicketExportDirectory, fields)
-    shutil.copytree(src=workingDirectory, dst= TicketExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
+    print(workingDirectory, baseExportDirectory, MainExportDirectory, fields)
+    shutil.copytree(src=workingDirectory, dst= MainExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
                     ignore_dangling_symlinks=False, dirs_exist_ok=False)
+
+    all_folders = os.listdir(MainExportDirectory)
+
+    for Folder in all_folders:
+        # print(Folder)
+        FilePath = os.path.join(MainExportDirectory, Folder)
+        Files_in_Folders = os.listdir(FilePath)
+        for file in Files_in_Folders:
+            File_inFolder_Path = os.path.join(MainExportDirectory, Folder, file)
+
+            with open(File_inFolder_Path, "r") as file:
+                data = file.read()
+                for key, value in fields.items():
+                    data = data.replace(f'[{key}]', value)
+            with open(File_inFolder_Path, "w") as file:
+                file.write(data)
+
 
     pass
 

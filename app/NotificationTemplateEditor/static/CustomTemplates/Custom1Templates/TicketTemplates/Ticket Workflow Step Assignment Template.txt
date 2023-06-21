@@ -1,0 +1,184 @@
+<!--Container Table-->
+  <table style="width: 100%;" cellpadding="3" cellspacing="0" border="0">
+    <!--Comments/Notes Section-->
+    
+     <tr>
+      <td>
+        <table cellpadding="5" cellspacing="0" border="0" style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+          <!--Header-->
+          <tr>
+            <td style="font-size: 12px; font-weight: bold; color: [H1 COLOR]; background-color: [BORDER COLOR]">Workflow Step Approval
+            </td>
+          </tr>
+          <!--Content-->
+          <tr><td style="font-size: 12px; line-height: 18px">
+	      {{{Approvers}}} are assigned to the following workflow step:<br /><br />
+		<span style="font-weight: bold;">{{{Title}}}</span><br /><br />
+		{{ClassificationName}} {{{ID}}}: <span style="font-weight: bold;"><a href="{{{ClientURL}}}" style="color:#6d0017">{{{TicketTitle}}}</a></span><br />Requested by: {{RequestorFullName}}<br /><br />
+		{{{Description}}}
+		<br /><br />
+		To approve or reject this step, click the link below:<br /><br />
+		<span style="font-weight: bold; font-size: 12px; line-height: 18px "><a href="{{{ApprovalURL}}}" style="color:#6d0017">Approve or Reject this Workflow Step</a></span><br /><br />
+          </td></tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+       
+
+    <!-- Spacing Row --
+    <tr>
+      <td style="padding: 0px;">&nbsp;
+      </td>
+    </tr>
+    <!--Summary Section-->
+    <tr>
+      <td>
+        <table cellpadding="5" cellspacing="0" border="0" style="width: 100%;  border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+          <!--Header-->
+          <tr>
+            <td style="font-size: 12px; font-weight: bold; color: [H1 COLOR]; background-color: [BORDER COLOR]">{{ClassificationName}} Details
+            </td>
+          </tr>
+          <!--ID-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid #c1c1c1;"><strong>Ticket Number:</strong> {{ID}}
+            </td>
+          </tr>
+<!--Date Created-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Date Created:</strong> {{CreatedDate}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{#DateModified}}
+			</span>
+          <!--Date Modified-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Date Modified:</strong> {{ModifiedDate}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/DateModified}}
+         {{#RequestorFullName}}
+			</span>
+          <!--Requestor-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Requestor:</strong> {{RequestorFullName}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/RequestorFullName}}
+         {{#UrgencyName}}
+			</span>
+          <!--Urgency-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Urgency:</strong> {{UrgencyName}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/UrgencyName}}
+			</span>
+           <!--Acct/Dept-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Acct/Dept:</strong> {{AccountName}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+        {{#RequestorPhone}}
+			</span>
+          <!--RequestorPhone-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Phone Number:</strong> {{RequestorPhone}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/RequestorPhone}}
+			</span>
+         <!--Service-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Service:</strong> {{ServiceName}}
+            </td>
+          </tr>
+          <!--Title-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Title:</strong> {{Title}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+  {{#DocImg Issue Type}}
+			</span>
+          <!--DocImg Issue Type-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Issue Type:</strong> {{Document Imaging Issue Type}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/DocImg Issue Type}}  
+
+    {{#ApplicationType}}
+			</span>
+          <!--ApplicationType-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Application Type:</strong> {{DocImg Application Type}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/ApplicationType}}     
+     {{#Type of Access}}
+			</span>
+          <!--Type of Access-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Type of Access Requested:</strong> {{DocImg Type of Access Requested}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/Type of Access}}  
+    {{#VPNAccount}}
+			</span>
+          <!--VPNAccount-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>VPN Account:</strong> {{DocImg VPN Account}} {{DocImg VPN User Name}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/VPNAccount}} 
+
+
+
+
+
+{{#Description}}
+			</span>
+          <!--Description-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Description:</strong> {{{Description}}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/Description}}
+         {{#CustomAttributes}}
+			</span>
+          <!--Custom Attributes-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>{{Name}}: </strong>{{Value}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/CustomAttributes}}
+          <!--TDNext Tickets-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>TDNext Tickets:</strong> <a href="{{NextTicketsUrl}}">{{NextTicketsUrl}}</a>
+            </td>
+          </tr>
+          <!--TDMobile-->
+          <tr>
+            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>TDMobile:</strong> <a href="{{MobileUrl}}">{{MobileUrl}}</a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    
+  </table>

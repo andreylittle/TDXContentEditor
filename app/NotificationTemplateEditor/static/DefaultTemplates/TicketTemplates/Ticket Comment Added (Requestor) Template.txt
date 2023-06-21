@@ -4,10 +4,10 @@
     <tr>
         <td>
             <table cellpadding="5" cellspacing="0" border="0"
-                   style="width: 100%; border: 1px solid [BORDER COLOR]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+                   style="width: 100%; border: 1px solid [TableColor]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
                 <!--Header-->
                 <tr>
-                    <td style="font-size: 19px; font-weight: bold; color: [H1 COLOR]; background-color: [BORDER COLOR];">Comment
+                    <td style="font-size: 19px; font-weight: bold; color: [Header1Color]; background-color: [TableColor];">Comment
                     </td>
                 </tr>
                 <!--Content-->
@@ -33,16 +33,16 @@
     <tr>
         <td>
             <table cellpadding="5" cellspacing="0" border="0"
-                   style="width: 100%; border: 1px solid [BORDER COLOR]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+                   style="width: 100%; border: 1px solid [TableColor]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
                 <!--Header-->
                 <tr>
-                    <td style="font-size: 19px; font-weight: bold; color: [H1 COLOR]; background-color: [BORDER COLOR];">{{ClassificationName}}
+                    <td style="font-size: 19px; font-weight: bold; color: [Header1Color]; background-color: [TableColor];">{{ClassificationName}}
                         Details
                     </td>
                 </tr>
                 <!--Acct/Dept-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px;">Acct/Dept
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px;">Acct/Dept
                     </td>
                 </tr>
                 <tr>
@@ -51,7 +51,7 @@
                 </tr>
                 <!--ID-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         ID
                     </td>
                 </tr>
@@ -61,7 +61,7 @@
                 </tr>
                 <!--Type-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Type
                     </td>
                 </tr>
@@ -71,7 +71,7 @@
                 </tr>
                 <!--Title-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Title
                     </td>
                 </tr>
@@ -82,7 +82,7 @@
                 {{#Description}}
                 <!--Description-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Description
                     </td>
                 </tr>
@@ -94,7 +94,7 @@
             Description}}
                 <!--Created By-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Created By
                     </td>
                 </tr>
@@ -104,7 +104,7 @@
                 </tr>
                 <!--Date Created-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Date Created
                     </td>
                 </tr>
@@ -115,7 +115,7 @@
                 {{#DateModified}}
                 <!--Date Modified-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Date Modified
                     </td>
                 </tr>
@@ -128,7 +128,7 @@
                 {{#RequestorFullName}}
                 <!--Requestor-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Requestor
                     </td>
                 </tr>
@@ -140,7 +140,7 @@
             RequestorFullName}}
                 <!--Status-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Status
                     </td>
                 </tr>
@@ -151,7 +151,7 @@
                 {{#DueDate}}
                 <!--Due Date-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Due Date
                     </td>
                 </tr>
@@ -164,7 +164,7 @@
                 {{#ServiceLevelAgreementName}}
                 <!--SLA-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         SLA
                     </td>
                 </tr>
@@ -177,7 +177,7 @@
                 {{#CustomAttributes}}
                 <!--Custom Attributes-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         {{Name}}
                     </td>
                 </tr>

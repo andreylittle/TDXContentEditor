@@ -4,10 +4,10 @@
     <tr>
         <td>
             <table cellpadding="5" cellspacing="0" border="0"
-                   style="width: 100%; border: 1px solid [BORDER COLOR]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+                   style="width: 100%; border: 1px solid [TableColor]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
                 <!--Header-->
                 <tr>
-                    <td style="font-size: 19px; font-weight: bold; color: [H1 COLOR]; background-color: [BORDER COLOR];">Details
+                    <td style="font-size: 19px; font-weight: bold; color: [Header1Color]; background-color: [TableColor];">Details
                     </td>
                 </tr>
                 <!--Content-->
@@ -27,16 +27,16 @@
     <tr>
         <td>
             <table cellpadding="5" cellspacing="0" border="0"
-                   style="width: 100%; border: 1px solid [BORDER COLOR]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+                   style="width: 100%; border: 1px solid [TableColor]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
                 <!--Header-->
                 <tr>
-                    <td style="font-size: 19px; font-weight: bold; color: [H1 COLOR]; background-color: [BORDER COLOR];">Project
+                    <td style="font-size: 19px; font-weight: bold; color: [Header1Color]; background-color: [TableColor];">Project
                         Request Forwarded Evaluation Complete
                     </td>
                 </tr>
                 <!--Project-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px;">Project
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px;">Project
                     </td>
                 </tr>
                 <tr>
@@ -45,7 +45,7 @@
                 </tr>
                 <!--Acct/Dept-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Acct/Dept
                     </td>
                 </tr>
@@ -55,7 +55,7 @@
                 </tr>
                 <!--Type-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Type
                     </td>
                 </tr>
@@ -66,7 +66,7 @@
                 {{#Description}}
                 <!--Description-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Description
                     </td>
                 </tr>
@@ -78,7 +78,7 @@
             Description}}
                 <!--Created-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Created
                     </td>
                 </tr>
@@ -88,7 +88,7 @@
                 </tr>
                 <!--Current Status-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Current Status
                     </td>
                 </tr>
@@ -98,7 +98,7 @@
                 </tr>
                 <!--Evaluator-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Evaluator
                     </td>
                 </tr>
@@ -108,7 +108,7 @@
                 </tr>
                 <!--Time Frame-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Time Frame
                     </td>
                 </tr>
@@ -118,7 +118,7 @@
                 </tr>
                 <!--Budget-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         Budget
                     </td>
                 </tr>
@@ -129,7 +129,7 @@
                 {{#IncludeTeamDynamixLinks}}
                 <!--TDNext-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         TDNext
                     </td>
                 </tr>
@@ -141,7 +141,7 @@
                 {{#IncludeTeamDynamixClientLinks}}
                 <!--TDClient-->
                 <tr>
-                    <td style="font-size: 17px; font-weight: bold; color: [H2 COLOR]; padding-top: 10px; border-top: 1px solid [BORDER COLOR];">
+                    <td style="font-size: 17px; font-weight: bold; color: [Header2Color]; padding-top: 10px; border-top: 1px solid [TableColor];">
                         TDClient
                     </td>
                 </tr>
