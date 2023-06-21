@@ -7,7 +7,7 @@
         <table cellpadding="5" cellspacing="0" border="0" style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
           <!--Header-->
           <tr>
-            <td style="font-size: 12px; font-weight: bold; color: [H1 COLOR]; background-color: [BORDER COLOR]">SLA Violation
+            <td style="font-size: 12px; font-weight: bold; color: [consolidated_Header1Color]; background-color: [consolidated_TableColor]">SLA Violation
             </td>
           </tr>
           <!--Content-->
@@ -37,17 +37,17 @@
         <table cellpadding="5" cellspacing="0" border="0" style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
           <!--Header-->
           <tr>
-            <td style="font-size: 12px; font-weight: bold; color: [H1 COLOR]; background-color: [BORDER COLOR]">{{ClassificationName}} Details
+            <td style="font-size: 12px; font-weight: bold; color: [consolidated_Header1Color]; background-color: [consolidated_TableColor]">{{ClassificationName}} Details
             </td>
           </tr>
          <!--ID-->
           <tr>
-            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Ticket Number:</strong> {{ID}}
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Ticket Number:</strong> {{ID}}
             </td>
           </tr>
 <!--Date Created-->
           <tr>
-            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Date Created:</strong> {{CreatedDate}}
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Date Created:</strong> {{CreatedDate}}
             </td>
           </tr>
           <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
@@ -55,7 +55,7 @@
 			</span>
           <!--Date Modified-->
           <tr>
-            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Date Modified:</strong> {{ModifiedDate}}
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Date Modified:</strong> {{ModifiedDate}}
             </td>
           </tr>
           <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
@@ -64,7 +64,7 @@
 			</span>
           <!--Requestor-->
           <tr>
-            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Requestor:</strong> {{RequestorFullName}}
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Requestor:</strong> {{RequestorFullName}}
             </td>
           </tr>
           <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
@@ -73,7 +73,7 @@
 			</span>
           <!--Urgency-->
           <tr>
-            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Urgency:</strong> {{UrgencyName}}
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Urgency:</strong> {{UrgencyName}}
             </td>
           </tr>
           <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
@@ -81,7 +81,7 @@
 			</span>
           	<!--Acct/Dept-->
           <tr>
-            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Acct/Dept:</strong> {{AccountName}}
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Acct/Dept:</strong> {{AccountName}}
             </td>
           </tr>
           <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
@@ -89,7 +89,7 @@
 			</span>
           <!--RequestorPhone-->
           <tr>
-            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Phone Number:</strong> {{RequestorPhone}}
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Phone Number:</strong> {{RequestorPhone}}
             </td>
           </tr>
           <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
@@ -97,12 +97,12 @@
 			</span>
          <!--Service-->
           <tr>
-            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Service:</strong> {{ServiceName}}
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Service:</strong> {{ServiceName}}
             </td>
           </tr>
           <!--Title-->
           <tr>
-            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Title:</strong> {{Title}}
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Title:</strong> {{Title}}
             </td>
           </tr>
           <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
@@ -110,7 +110,7 @@
 			</span>
           <!--Description-->
           <tr>
-            <td style="font-size: 12px; color: [H2 COLOR]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Description:</strong> {{{Description}}}
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Description:</strong> {{{Description}}}
             </td>
           </tr>
           <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
@@ -118,7 +118,7 @@
     {{/IsNotMultipleItems}}
 			</span>
 			<tr>
-  <td style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 12px; color: [H2 COLOR]; padding-top: 5px;">To view this request, click the link below:<br />
+  <td style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px;">To view this request, click the link below:<br />
   <a href="{{ClientUrl}}">{{ClientUrl}}</a>
             </td></tr>
   </table>

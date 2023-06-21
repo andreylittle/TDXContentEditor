@@ -6,6 +6,7 @@ import io
 import pathlib
 import shutil
 import zipfile
+import time
 
 NotificationEditor = Blueprint("NotificationEditor",__name__, template_folder="templates", static_url_path="TDXContentEditor/app/NotificationTemplateEditor/static", static_folder=os.path.join(os.getcwd() +r"\app\NotificationTemplateEditor\static"))
 
@@ -24,54 +25,56 @@ def getChangeLog():
 @NotificationEditor.route("/DownloadDefaultTemplates", methods=["POST"])
 def download_defaultTemplates():
     basepath = os.getcwd()
+    current_time = time.time()
+
     data = [
         {
             'formid': 1,
-            'exportFolderBase': f'{basepath}\DefaultExportFolder',
-            'zipFilePath':'./DefaultExportFolder/',
+            'exportFolderBase': f'{basepath}\exports\DefaultExportFolder - {current_time}',
+            'zipFilePath':f'./exports/DefaultExportFolder - {current_time}/',
             'mainFolderLocation': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates',
             'fields': [request.form.to_dict()],
             'tickets': {
                 'CheckboxKey': 'Ticket_CheckBox',
                 'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates\TicketTemplates',
-                'ExportFolder': fr'{basepath}\DefaultExportFolder\TicketTemplates'
+                'ExportFolder': fr'{basepath}\exports\DefaultExportFolder - {current_time}\TicketTemplates'
             },
             'knowledgebase': {
                 'CheckboxKey': 'KB_CheckBox',
                 'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates\KBTemplates',
-                'ExportFolder': fr'{basepath}\DefaultExportFolder\KnowledgebaseTemplates'
+                'ExportFolder': fr'{basepath}\exports\DefaultExportFolder - {current_time}\KnowledgebaseTemplates'
 
             },
             'projects': {
                 'CheckboxKey': 'Project_CheckBox',
                 'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\DefaultTemplates\ProjectTemplates',
-                'ExportFolder': fr'{basepath}\DefaultExportFolder\ProjectTemplates'
+                'ExportFolder': fr'{basepath}\exports\DefaultExportFolder - {current_time}\ProjectTemplates'
 
             }
 
         },
         {
             'formid': 2,
-            'exportFolderBase': f'{basepath}\Custom1ExportFolder',
-            'zipFilePath':'./Custom1ExportFolder/',
+            'exportFolderBase': f'{basepath}\exports\Custom1ExportFolder - {current_time}',
+            'zipFilePath':f'./exports/Custom1ExportFolder - {current_time}/',
             'mainFolderLocation': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom1Templates',
             'fields': [request.form.to_dict()],
             'tickets': {
                 'CheckboxKey': 'consolidated_Ticket_CheckBox',
                 'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom1Templates\TicketTemplates',
-                'ExportFolder': fr'{basepath}\Custom1ExportFolder\TicketTemplates'
+                'ExportFolder': fr'{basepath}\exports\Custom1ExportFolder - {current_time}\TicketTemplates'
 
             },
             'knowledgebase': {
                 'CheckboxKey': 'consolidated_knowledgebase_CheckBox',
                 'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom1Templates\KnowledgebaseTemplates',
-                'ExportFolder': fr'{basepath}\Custom1ExportFolder\KnowledgebaseTemplates'
+                'ExportFolder': fr'{basepath}\exports\Custom1ExportFolder - {current_time}\KnowledgebaseTemplates'
 
             },
             'projects': {
                 'CheckboxKey': 'consolidated_project_CheckBox',
                 'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom1Templates\ProjectTemplates',
-                'ExportFolder': fr'{basepath}\Custom1ExportFolder\ProjectTemplates'
+                'ExportFolder': fr'{basepath}\exports\Custom1ExportFolder - {current_time}\ProjectTemplates'
 
             }
 
@@ -144,7 +147,7 @@ def download_defaultTemplates():
 #Fields will be used for the find/replace in the new exported directory
 def get_ticket_templates(workingDirectory, baseExportDirectory, MainExportDirectory,fields):
 
-    print(workingDirectory, baseExportDirectory, MainExportDirectory, fields)
+    print(fields)
     shutil.copytree(src=workingDirectory, dst= MainExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
                     ignore_dangling_symlinks=False, dirs_exist_ok=False)
     all_files = os.listdir(MainExportDirectory)
