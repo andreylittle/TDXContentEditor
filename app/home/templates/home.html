@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block head %}
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('home.static',filename='homepage.css') }}">
+{% endblock %}
+ {% block body %}
+
+<br>
+
+<div class="container" id="gettingStartedHome">
+ <div style="text-align: center; padding-bottom: 25px"><strong><h1>Disclaimer</h1></strong>
+
+  <div style="font-size: 1.5rem">This tool has been developed by Andrey Little; an employee at TeamDynamix, for the convenience of our customers. Please note that this tool is <strong>not</strong> supported by the TeamDynamix Engineering Team. It is an independent creation.
+
+<br><br>We kindly request that you do not submit service requests or bug reports related to this tool through the official TeamDynamix Solutions Portal. The TeamDynamix Engineering Team and TeamDynamix Support Team are not responsible for any issues or inquiries arising from the use of this tool.
+
+
+Thank you for your understanding and cooperation.</div>
+ </div>
+    <div class="getting-started-cards">
+        <div class="card">
+            <div class="card-header">
+                <h4><span class="fa fa-check" aria-hidden="true"></span> Notification Template Editor</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Contains Default and Custom Notification Templates</p>
+                <a href="/NotificationEditor" class="btn btn-primary">Goto Notification Template Editor</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h4><span class="fa fa-clock-o" aria-hidden="true"></span> Client Portal HTML Module Editor (In Development)</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Will contain a page that allows users to easily modify and download custom html modules for their client portal</p>
+                <a href="/ModuleEditor" class="btn btn-primary">Goto Client Portal HTML Module Editor</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

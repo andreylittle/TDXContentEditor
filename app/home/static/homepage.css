@@ -1,0 +1,51 @@
+body .container{
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 100px;
+}
+#gettingStartedHome{
+
+}
+.getting-started-cards{
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 50% 50%;
+}
+
+.getting-started-cards > .card{
+    display: flex;
+    flex-direction: column;
+}
+.card > .card-body{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.card-body>.card-text{
+    flex-grow: 1;
+}
+.getting-started-cards .card{
+
+    margin: 20px;
+}
+
+body #GettingStartedWithAuth{
+
+}
+body .codeContainer{
+    width: auto;
+    height: auto;
+    background-color: #263238;
+    padding: 20px 20px 0 20px;
+    border-radius: 5px;
+}
+
+body .codeContainer pre{
+    background: none;
+    color: white;
+    border-color: transparent;
+    word-wrap: break-word;
+    white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+
+}

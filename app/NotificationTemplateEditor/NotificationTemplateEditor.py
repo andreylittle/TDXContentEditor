@@ -13,15 +13,22 @@ NotificationEditor = Blueprint("NotificationEditor",__name__, template_folder="t
 
 @NotificationEditor.route('/', methods=["GET"])
 def getHome():
-    DefaultTemplate = open("app/NotificationTemplateEditor/static/PreviewHTMLTemplates/default-template-preview.html", "r")
-    customTemplate1 = open("app/NotificationTemplateEditor/static/PreviewHTMLTemplates/custom1-template-preview-ConsolidatedTemplate.html", "r")
-    customTemplate2 = open("app/NotificationTemplateEditor/static/PreviewHTMLTemplates/custom2-template-preview-OUITTemplate.html", "r")
+    DefaultTemplate = open("app/NotificationTemplateEditor/static/PreviewHTMLTemplates/Default/default-template-preview.html", "r")
+    customTemplate1 = open("app/NotificationTemplateEditor/static/PreviewHTMLTemplates/Custom1/custom1-template-preview-ConsolidatedTemplate.html", "r")
+    customTemplate2 = open("app/NotificationTemplateEditor/static/PreviewHTMLTemplates/Custom2/custom2-template-preview-OUITTemplate.html", "r")
+    customTemplate3 = open("app/NotificationTemplateEditor/static/PreviewHTMLTemplates/Custom3/custom3-template-preview-MNPS.html", "r")
 
 
-    return render_template("defaultTemplateEditor.html", default_template_preview=DefaultTemplate.read(), custom1_template_preview=customTemplate1.read(),custom2_template_preview=customTemplate2.read()  )
-@NotificationEditor.route('/ChangeLog', methods=["GET"])
+
+    return render_template("defaultTemplateEditor.html",
+                           default_template_preview=DefaultTemplate.read(),
+                           custom1_template_preview=customTemplate1.read(),
+                           custom2_template_preview=customTemplate2.read(),
+                           custom3_template_preview=customTemplate3.read()
+                           )
+@NotificationEditor.route("/ChangeLog", methods=["GET"])
 def getChangeLog():
-    render_template('changelog.html')
+    return render_template('changelog.html')
 @NotificationEditor.route("/DownloadDefaultTemplates", methods=["POST"])
 def download_defaultTemplates():
     basepath = os.getcwd()
@@ -75,6 +82,58 @@ def download_defaultTemplates():
                 'CheckboxKey': 'consolidated_project_CheckBox',
                 'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom1Templates\ProjectTemplates',
                 'ExportFolder': fr'{basepath}\exports\Custom1ExportFolder - {current_time}\ProjectTemplates'
+
+            }
+
+        },
+        {
+            'formid': 3,
+            'exportFolderBase': f'{basepath}\exports\Custom2ExportFolder - {current_time}',
+            'zipFilePath': f'./exports/Custom2ExportFolder - {current_time}/',
+            'mainFolderLocation': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom2Templates',
+            'fields': [request.form.to_dict()],
+            'tickets': {
+                'CheckboxKey': 'custom_2_ticket_checkbox',
+                'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom2Templates\TicketTemplates',
+                'ExportFolder': fr'{basepath}\exports\Custom2ExportFolder - {current_time}\TicketTemplates'
+
+            },
+            'knowledgebase': {
+                'CheckboxKey': 'custom_2_knowledgebase_checkbox',
+                'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom2Templates\KnowledgebaseTemplates',
+                'ExportFolder': fr'{basepath}\exports\Custom2ExportFolder - {current_time}\KnowledgebaseTemplates'
+
+            },
+            'projects': {
+                'CheckboxKey': 'custom_2_project_checkbox',
+                'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom2Templates\ProjectTemplates',
+                'ExportFolder': fr'{basepath}\exports\Custom2ExportFolder - {current_time}\ProjectTemplates'
+
+            }
+
+        },
+        {
+            'formid': 4,
+            'exportFolderBase': f'{basepath}\exports\Custom3ExportFolder - {current_time}',
+            'zipFilePath': f'./exports/Custom3ExportFolder - {current_time}/',
+            'mainFolderLocation': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom3Templates',
+            'fields': [request.form.to_dict()],
+            'tickets': {
+                'CheckboxKey': 'custom_3_ticket_checkbox',
+                'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom3Templates\TicketTemplates',
+                'ExportFolder': fr'{basepath}\exports\Custom3ExportFolder - {current_time}\TicketTemplates'
+
+            },
+            'knowledgebase': {
+                'CheckboxKey': 'custom_3_knowledgebase_checkbox',
+                'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom3Templates\KnowledgebaseTemplates',
+                'ExportFolder': fr'{basepath}\exports\Custom3ExportFolder - {current_time}\KnowledgebaseTemplates'
+
+            },
+            'projects': {
+                'CheckboxKey': 'custom_3_project_checkbox',
+                'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom3Templates\ProjectTemplates',
+                'ExportFolder': fr'{basepath}\exports\Custom3ExportFolder - {current_time}\ProjectTemplates'
 
             }
 
@@ -137,7 +196,7 @@ def download_defaultTemplates():
         data,
         mimetype='application/zip',
         as_attachment=True,
-        download_name="ExportFolder" + '.zip'
+        download_name=f'Export.zip'
     )
 
 
@@ -147,7 +206,6 @@ def download_defaultTemplates():
 #Fields will be used for the find/replace in the new exported directory
 def get_ticket_templates(workingDirectory, baseExportDirectory, MainExportDirectory,fields):
 
-    print(fields)
     shutil.copytree(src=workingDirectory, dst= MainExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
                     ignore_dangling_symlinks=False, dirs_exist_ok=False)
     all_files = os.listdir(MainExportDirectory)
@@ -167,7 +225,6 @@ def get_ticket_templates(workingDirectory, baseExportDirectory, MainExportDirect
 
 def get_kb_templates(workingDirectory, baseExportDirectory, MainExportDirectory,fields):
 
-    print(workingDirectory, baseExportDirectory, MainExportDirectory, fields)
     shutil.copytree(src=workingDirectory, dst= MainExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
                     ignore_dangling_symlinks=False, dirs_exist_ok=False)
 
@@ -184,7 +241,6 @@ def get_kb_templates(workingDirectory, baseExportDirectory, MainExportDirectory,
     pass
 def get_project_templates(workingDirectory, baseExportDirectory, MainExportDirectory,fields):
 
-    print(workingDirectory, baseExportDirectory, MainExportDirectory, fields)
     shutil.copytree(src=workingDirectory, dst= MainExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
                     ignore_dangling_symlinks=False, dirs_exist_ok=False)
 
