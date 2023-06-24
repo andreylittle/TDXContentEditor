@@ -1,0 +1,107 @@
+
+
+<hr>
+Any replies to this ticket should be above this line and include the message below to be properly added to your ticket.
+
+<!--Container Table-->
+<!--[if mso]>
+ <center>
+<table style="width: 600; table-layout: fixed;" cellpadding="3" cellspacing="0" border="0">
+<![endif]-->
+
+<table style="width: 100%; max-width: 600px; table-layout: fixed;" cellpadding="3" cellspacing="0" border="0">
+	<tr>
+    	<td>
+    		<table cellpadding="5" cellspacing="0" border="0" style="width: 100%; border: 1px solid [custom2_tableColor]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+        		<!--Header-->
+        		<tr>
+          			<td colspan="2" style="background-color: [custom2_tableColor];">
+          				<left><a href="[custom2_ClientPortalURL]"><img width="[custom2_headerImageWidth]" height="[custom2_headerImageHeight]" src="[custom2_headerImageLink]"/></a></left>
+          			</td>
+        		</tr>
+				
+   				<tr>
+					<td colspan="2" style="font-size: 14px;font-weight: bold; color: [custom2_ticketLinkColor]; border-bottom: 1px solid [custom2_tableColor];">
+						<a href="{{NextTicketsUrl}}"><font color="[custom2_ticketLinkColor]">View Ticket #{{ID}}</font></a>&nbsp;&nbsp;&nbsp;
+					</td>
+				</tr>
+     			
+
+				<tr>
+     				<td valign="top" style="vertical-align:top;">
+     					<strong>SLA Violation:</strong>
+     				</td>
+     				<td>
+				{{#DeadlineCompletedDate}}
+		        This {{ClassificationNameLower}} has reached {{DeadlinePercentage}} of its {{DeadlineType}} deadline, which was completed late on {{DeadlineCompletedDate}}.
+			      {{/DeadlineCompletedDate}}
+			      {{^DeadlineCompletedDate}}
+			      This {{ClassificationNameLower}} has reached {{DeadlinePercentage}} of its {{DeadlineType}} deadline, which has not been fulfilled.
+			      {{/DeadlineCompletedDate}}
+    				</td>
+</tr>
+				<tr>
+     				<td valign="top" style="vertical-align:top;">
+     					<strong>Ticket Title:</strong>
+     				</td>
+     				<td>
+        				{{Title}}
+    				</td>
+</tr>
+<tr>
+   					<td valign="top" style="vertical-align:top;">
+                    	<strong>Action Needed:</strong> 
+					</td>
+    				<td>
+To address this deadline, update the {{ClassificationNameLower}}'s status.
+   					</td>
+                </tr>
+<tr>
+   					<td valign="top" style="vertical-align:top;">
+                    	<strong>Requestor:</strong> 
+					</td>
+    				<td>
+{{RequestorFullName}}
+   					</td>
+                </tr>
+<tr>
+   					<td valign="top" style="vertical-align:top;">
+                    	<strong>Responsible:</strong> 
+					</td>
+    				<td>
+{{ResponsibleGroupName}}
+   					</td>
+                </tr>
+<tr>
+   					<td valign="top" style="vertical-align:top;">
+                    	<strong>Submitted:</strong> 
+					</td>
+    				<td>
+{{CreatedDate}}
+   					</td>
+                </tr>
+				<tr>
+   					<td valign="top" style="vertical-align:top;">
+                    	<strong>Description:</strong> 
+					</td>
+    				<td>
+                    	{{{Description}}}
+   					</td>
+                </tr>
+
+
+            		<td colspan="2" valign="middle" style="color: #FFFFFF; background-color: [custom2_tableColor];" >
+                    	<center>
+              				<font color="[custom2_BaseTextColor]">[custom2_BaseText]</font>
+            </center>
+            </td>
+</tr>
+</table>
+      </td>
+    </tr>
+  </table>
+<!--[if mso]>
+</table>
+ </center>
+<![endif]--> 
+

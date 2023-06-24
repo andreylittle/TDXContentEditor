@@ -1,0 +1,56 @@
+<hr>
+Any replies to this ticket should be above this line and include the message below to be properly added to your ticket.
+
+<!--Container Table-->
+<!--[if mso]>
+ <center>
+<table style="width: 600; table-layout: fixed;" cellpadding="3" cellspacing="0" border="0">
+<![endif]-->
+
+<table style="width: 100%; max-width: 600px; table-layout: fixed;" cellpadding="3" cellspacing="0" border="0">
+	<tr>
+    	<td>
+    		<table cellpadding="5" cellspacing="0" border="0" style="width: 100%; border: 1px solid [custom2_tableColor]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+        		<!--Header-->
+        		<tr>
+          			<td colspan="2" style="background-color: [custom2_tableColor];">
+          				<left><a href="[custom2_ClientPortalURL]"><img width="[custom2_headerImageWidth]" height="[custom2_headerImageHeight]" src="[custom2_headerImageLink]"/></a></left>
+          			</td>
+        		</tr>
+   				<tr>
+					<td colspan="2" style="font-size: 14px;font-weight: bold; color: [custom2_ticketLinkColor]; border-bottom: 1px solid [custom2_tableColor];">
+						<a href="{{NextTicketsUrl}}"><font color=[custom2_tableColor]">View Ticket #{{ID}}</font></a>&nbsp;&nbsp;&nbsp;
+					</td>
+				</tr>
+     			
+<tr>
+<td colspan="2">
+  {{{Approvers}}} are assigned to the following workflow step:<br /><br />
+		<span style="font-weight: bold;">{{{Title}}}</span><br /><br />
+
+		{{ClassificationName}} {{{ID}}}: <span style="font-weight: bold;"><a href="{{{ClientURL}}}">{{{TicketTitle}}}</a></span><br />
+Requested by: {{CreatedUserFullName}}<br /><br />
+
+{{#HasCustomAttributes}}
+<strong>Ticket Information</strong><br />
+{{/HasCustomAttributes}}
+{{#CustomAttributes}}{{Name}}: {{Value}}<br /> {{/CustomAttributes}}<br />
+		<strong><I>To approve or reject this step, click the link below:</strong></I><br />
+		<span style="font-weight: bold;"><a href="{{{ApprovalURL}}}">Approve or reject this workflow step</a></span><br /><br />
+</td>
+</tr>
+
+            		<td colspan="2" valign="middle" style="color: #FFFFFF; background-color: [custom2_tableColor];" >
+                    	<center>
+              				<font color="[custom2_BaseTextColor]">[custom2_BaseText]</font>
+            </center>
+            </td>
+</tr>
+</table>
+      </td>
+    </tr>
+  </table>
+<!--[if mso]>
+</table>
+ </center>
+<![endif]--> 

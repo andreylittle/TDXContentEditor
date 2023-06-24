@@ -1,0 +1,92 @@
+
+
+<hr>
+Any replies to this ticket should be above this line and include the message below to be properly added to your ticket.
+
+<!--Container Table-->
+<!--[if mso]>
+ <center>
+<table style="width: 600; table-layout: fixed;" cellpadding="3" cellspacing="0" border="0">
+<![endif]-->
+
+<table style="width: 100%; max-width: 600px; table-layout: fixed;" cellpadding="3" cellspacing="0" border="0">
+	<tr>
+    	<td>
+    		<table cellpadding="5" cellspacing="0" border="0" style="width: 100%; border: 1px solid [custom2_tableColor]; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+        		<!--Header-->
+        		<tr>
+          			<td colspan="2" style="background-color: [custom2_tableColor];">
+          				<left><a href="[custom2_ClientPortalURL]"><img width="[custom2_headerImageWidth]" height="[custom2_headerImageHeight]" src="[custom2_headerImageLink]"/></a></left>
+          			</td>
+        		</tr>
+   				<tr>
+					<td colspan="2" style="font-size: 14px;font-weight: bold; color: [custom2_ticketLinkColor]; border-bottom: 1px solid [custom2_tableColor];">
+						<a href="{{NextTicketsUrl}}"><font color="[custom2_ticketLinkColor]">View Ticket #{{ID}}</font></a>&nbsp;&nbsp;
+					</td>
+				</tr>  
+				<tr>
+   					<td valign="top" style="vertical-align:top;">
+                    	<strong>Task Description:</strong> 
+					</td>
+    				<td>
+<strong>{{TaskTitle}}</strong><br />
+{{{TaskDescription}}}
+   					</td>
+                </tr>
+<tr>
+<tr>
+     				<td valign="top" style="vertical-align:top;">
+     					<strong>Comment:</strong>
+     				</td>
+     				<td>
+        				{{UpdateCreatedUserFullName}} commented on this ticket on {{ModifiedDate}}.<br /><br />
+Comments: <I>{{{UpdateText}}}</I>
+    				</td>
+</tr>
+
+   					<td valign="top" style="vertical-align:top;">
+                    	<strong>Task Creator:</strong> 
+					</td>
+    				<td>
+{{TaskCreatedFullName}}
+   					</td>
+                </tr>
+<tr>
+   					<td valign="top" style="vertical-align:top;">
+                    	<strong>Responsible:</strong> 
+					</td>
+    				<td>
+{{ResponsibleName}} <strong>/</strong> {{ResponsibleGroupName}}
+   					</td>
+                </tr>
+<tr>
+   					<td valign="top" style="vertical-align:top;">
+                    	<strong>Requestor:</strong> 
+					</td>
+    				<td>
+{{RequestorFullName}}
+   					</td>
+                </tr>
+				<tr>
+   					<td valign="top" style="vertical-align:top;">
+                    	<strong>Ticket Description:</strong> 
+					</td>
+    				<td><strong>{{Title}}</strong><br />
+                    	{{{Description}}}
+   					</td>
+                </tr>
+				</tr>
+            		<td colspan="2" valign="middle" style="color: #FFFFFF; background-color: [custom2_tableColor];" >
+                    	<center>
+              				<font color="[custom2_BaseTextColor]">[custom2_BaseText]</font>
+            </center>
+            </td>
+</tr>
+</table>
+      </td>
+    </tr>
+  </table>
+<!--[if mso]>
+</table>
+ </center>
+<![endif]--> 

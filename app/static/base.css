@@ -1,0 +1,22 @@
+
+.tdxNavbar{
+    background-color:#ebe9f5;
+    border-bottom: 2px solid #c6b6da
+
+}
+.tdxNavbar div .nav-item> .nav-link{
+    color: #8332a7;
+    font-weight: bold;
+}
+.navbar-brand{
+    color: #8332a7;
+    font-weight: bolder;
+}
+.navbar-toggler{
+    color: #8332a7;
+}
+body .navbar:after{
+    position: relative;
+}
+
+

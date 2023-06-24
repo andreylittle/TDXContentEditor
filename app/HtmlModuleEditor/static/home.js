@@ -5,8 +5,8 @@ function updateFieldColor(field) {
 function updateDefaultedPreview(fieldValue, template_id, class_to_update, tag_to_update,id_to_update,attribute_to_update){
 
     if (class_to_update){
-
-            var templateToUpdate = document.getElementById(template_id)
+        // This gets the ID of the incoming template
+        var templateToUpdate = document.getElementById(template_id)
         // Gets the list of items that contain the specific class
         var list_of_classes_to_update = templateToUpdate.getElementsByClassName(class_to_update)
 
@@ -14,11 +14,6 @@ function updateDefaultedPreview(fieldValue, template_id, class_to_update, tag_to
         for (let i=0; i<list_of_classes_to_update.length;i++){
             list_of_classes_to_update[i].style[attribute_to_update]=fieldValue;
         }
-
-
-
-        // This gets the ID of the incoming template
-
     }
 
     if (tag_to_update){
@@ -34,9 +29,9 @@ function updateDefaultedPreview(fieldValue, template_id, class_to_update, tag_to
     }
     // when editing ID,
     if (id_to_update){
-        for (let i=0; i<id_to_update.length;i++){
-
-            var item_id_to_update = document.getElementById(id_to_update[i])
+        // This gets the ID of the incoming template
+        // Gets the list of items that contain the specific class
+        var item_id_to_update = document.getElementById(id_to_update)
 
         if (attribute_to_update==='src'){
             function validateImageURL(url) {
@@ -67,11 +62,7 @@ function updateDefaultedPreview(fieldValue, template_id, class_to_update, tag_to
         {
             item_id_to_update[attribute_to_update] = fieldValue
         }
-        }
-        // This gets the ID of the incoming template
-        // Gets the list of items that contain the specific class
 
-
-     }
+    }
 
 }
