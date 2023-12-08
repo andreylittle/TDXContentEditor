@@ -1,0 +1,106 @@
+<<table id="email-body" style="background-color: white; border: 1px solid #1d283a; border-collapse: collapse; box-sizing: border-box; font-family: Arial, sans-serif; margin: auto; max-width: 700px; min-width: 400px; width: 100%;">
+<!-- ⇓ EMAIL HEADER ⇓ -->
+    <tr><td id="header-banner" style="padding: 0;">
+        <img 
+            style="height: 120px; object-fit: cover; width: 100%;"
+            src="https://jasonbiola.github.io/TDX/images/photos/library-hero-700px.jpg"
+        />
+    </td></tr>
+    
+    <tr><td id="header-logo" style="padding: 1%;">
+        <table style="margin: auto; width: 315px;"><tr>
+            <td id="header-icon">
+                <img src="https://jasonbiola.github.io/TDX/images/icons/biola-bell-tower-left-79x100.png" style="height: 80px" />
+            </td>
+            <td id="header-text" style="text-align: center;">
+                <div style="margin-left: -10px; font-size: 20px; line-height: 2; letter-spacing: 1px;">Information Technology</div>
+                <div style="margin-left: -10px; font-size: 48px; line-height: .8;">SERVICES</div>
+            </td>
+        </tr></table> <!-- #header-text -->
+    </td></tr> <!-- #header-logo-->
+<!-- ⇑ EMAIL HEADER ⇑ -->
+<!-- ⇓ EMAIL BODY ⇓ -->
+    <tr><td id="request-details" style="padding: 2%;">
+        <h2 style="text-align: center; background-color: #1d283a; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
+            Ticket Task Comment
+        </h2>
+        <div style="border: 1px solid #1d283a; border-radius: 0 0 12px 12px; padding: 12px;">
+            <div>
+                {{UpdateCreatedUserFullName}} commented on {{UpdateCreatedDate}}
+            </div>
+            <blockquote style="border-left: 3px solid #2268ab; border-radius: 6px; padding: 12px; margin: 12px;">
+                {{{UpdateText}}}
+            </blockquote>
+        </div>
+    </td></tr>
+
+    <tr><td id="ticket-details" style="padding: 2%;">
+        <h2 style="text-align: center; background-color: #1d283a; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
+            Task Details
+        </h2>
+       <div style="border: 1px solid #1d283a; border-radius: 0 0 12px 12px; padding: 12px;">
+        <table>
+
+            <!--Task ID-->
+            {{#TaskID}} 
+            <tr><td style="font-weight: bold; width: 135px;">Task ID:</td><td><a href="{{TaskUrl}}">{{TaskID}}</a></td></tr>
+            {{/TaskID}}             
+
+            <!--Task Title-->
+            {{#TaskTitle}}
+            <tr><td style="font-weight: bold; width: 135px;">Task Title:</td><td>{{TaskTitle}}</td></tr>
+            {{/TaskTitle}}            
+
+            <!--Task Description-->
+            {{#TaskDescription}}
+            <tr><td style="font-weight: bold;">Task Description:</td><td>{{{TaskDescription}}}</td></tr>
+            {{/TaskDescription}}            
+
+            <!--Task Complete-->
+            {{#TaskPercentComplete}}
+            <tr><td style="font-weight: bold;">% Complete:</td><td>{{TaskPercentComplete}}</td></tr>
+            {{/TaskPercentComplete}}
+
+            <!--Task Responsible-->
+            {{#TaskResponsibleName}}
+            <tr><td style="font-weight: bold;">Technician:</td><td>{{TaskResponsibleName}}</td></tr>
+            {{/TaskResponsibleName}}            
+
+            <!--Task Responsible Group-->
+            {{#TaskResponsibleGroupName}}
+            <tr><td style="font-weight: bold;">Responsible Group:</td><td>{{TaskResponsibleGroupName}}</td></tr>
+            {{/TaskResponsibleGroupName}}
+
+            <!--Task Due Date-->
+            {{#TaskEndDate}}
+            <tr><td style="font-weight: bold;">Due Date:</td><td>{{TaskEndDate}}</td></tr>
+            {{/TaskEndDate}}
+
+            <!--Location-->
+            {{#LocationName}}
+            <tr><td style="font-weight: bold;">Location:</td><td>{{LocationName}} / {{RoomName}}</td></tr>
+            {{/LocationName}}
+
+            <!--Ticket ID-->
+            {{#ID}}
+            <tr><td style="font-weight: bold; width: 135px;">Ticket ID:</td><td><a href="{{NextTicketsUrl}}">{{ID}}</a></td></tr>
+            {{/ID}}
+
+            <!--Ticket Title-->
+            {{#Title}}
+            <tr><td style="font-weight: bold;">Ticket Title:</td><td>{{Title}}</td></tr>
+            {{/Title}}
+        </table>
+    </td></tr> <!-- #ticket-details -->
+
+   
+<!-- ⇑ EMAIL BODY ⇑ -->
+    
+<!-- ⇓ EMAIL FOOTER ⇓ -->     
+       <tr><td id="logo" style="text-align: center; margin: auto; max-width: 600px; min-width: 330px; padding: 2%;">
+        <img src="https://jasonbiola.github.io/TDX/images/icons/biola-logo-black-text-290x80.png" style="height: 80px; object-fit: contain; width: 80%;"/>
+    </td></tr> <!-- #logo -->
+    
+    </td></tr>
+<!-- ⇑ EMAIL FOOTER ⇑ -->
+</table>

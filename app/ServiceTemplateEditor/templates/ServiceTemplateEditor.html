@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block head %}
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('HTMLModuleEditor.static',filename='home.css') }}">
+      <script src= "{{ url_for('HTMLModuleEditor.static',filename='home.js') }}"></script>
+{% endblock %}
+{% block body %}
+      <div class="sidenav">
+             <img src="/static/TDX Graphics/TDX Icon fullcolor_rounded square.png" alt="tdx logo"><span class="titleText">Service Template Editor v1</span>
+
+
+         <a id="changeLog" href="/ChangeLog">Change Log</a>
+
+
+      </div>
+      <div class="template-main-content-body">
+         <h1>Coming Soon</h1>
+         <div class="template-information-list">
+<!--             Defaulted Template-->
+            <div id="defaultTempalteAnchor" class="template-edit">
+            </div>
+            <div class="template-preview">
+<!--               {{default_template_preview|safe}}-->
+            </div>
+
+         </div>
+      </div>
+{% endblock %}

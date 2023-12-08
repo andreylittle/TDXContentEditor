@@ -7,11 +7,11 @@ def create_app():
 
     from app.home import home
     from app.NotificationTemplateEditor import NotificationTemplateEditor
-    from app.HtmlModuleEditor import HTMLModuleEditor
+    from app.HtmlModuleEditor import HtmlModuleEditor
 
     app.register_blueprint(home.home, url_prefix="/")
     app.register_blueprint(NotificationTemplateEditor.NotificationEditor, url_prefix="/NotificationEditor")
-    app.register_blueprint(HTMLModuleEditor.HTMLModuleEditor, url_prefix="/ModuleEditor")
+    app.register_blueprint(HtmlModuleEditor.HTMLModuleEditor, url_prefix="/HtmlModuleEditor")
 
 
 

@@ -1,0 +1,115 @@
+<table id="email-body" style="background-color: white; border: 1px solid #1d283a; border-collapse: collapse; box-sizing: border-box; font-family: Arial, sans-serif; margin: auto; max-width: 700px; min-width: 400px; width: 100%;">
+<!-- ⇓ EMAIL HEADER ⇓ -->
+    <tr><td id="header-banner" style="padding: 0;">
+        <img 
+            style="height: 120px; object-fit: cover; width: 100%;"
+            src="https://jasonbiola.github.io/TDX/images/photos/library-hero-700px.jpg"
+        />
+    </td></tr>
+    
+    <tr><td id="header-logo" style="padding: 1%;">
+        <table style="margin: auto; width: 315px;"><tr>
+            <td id="header-icon">
+                <img src="https://jasonbiola.github.io/TDX/images/icons/biola-bell-tower-left-79x100.png" style="height: 80px" />
+            </td>
+            <td id="header-text" style="text-align: center;">
+                <div style="margin-left: -10px; font-size: 20px; line-height: 2; letter-spacing: 1px;">Information Technology</div>
+                <div style="margin-left: -10px; font-size: 48px; line-height: .8;">SERVICES</div>
+            </td>
+        </tr></table> <!-- #header-text -->
+    </td></tr> <!-- #header-logo-->
+<!-- ⇑ EMAIL HEADER ⇑ -->
+
+<!-- ⇓ EMAIL BODY ⇓ -->
+    <tr><td id="ticket-info" style="padding: 2%;">
+        <h2 style="text-align: center; background-color: #1d283a; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
+            Ticket #{{ID}}
+        </h2>
+        <div style="border: 1px solid #1d283a; border-radius: 0 0 12px 12px; padding: 12px;">
+            {{Title}}
+        </div>
+    </td></tr>
+
+    <tr><td id="request-details" style="padding: 2%;">
+        <h2 style="text-align: center; background-color: #1d283a; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
+            Request Details
+        </h2>
+        <div style="border: 1px solid #1d283a; border-radius: 0 0 12px 12px; padding: 12px;">
+            <div>
+                {{CreatedUserFullName}} requested:
+            </div>
+            <blockquote style="border-left: 3px solid #2268ab; border-radius: 6px; padding: 12px; margin: 12px;">
+                {{{Description}}}
+            </blockquote>
+        </div>
+    </td></tr>
+
+    <tr><td id="ticket-details" style="padding: 2%;">
+        <h2 style="text-align: center; background-color: #1d283a; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
+            Ticket Details
+        </h2>
+        <div style="border: 1px solid #1d283a; border-radius: 0 0 12px 12px; padding: 12px;">
+        <table>
+            <!--Requestor-->
+            {{#RequestorFullName}}
+            <tr><td style="font-weight: bold; width: 135px;">Requestor/Client:</td><td>{{RequestorFullName}}</td></tr>
+            {{/RequestorFullName}}
+
+            <!--Created Date-->
+            {{#CreatedDate}}
+            <tr><td style="font-weight: bold;">Date Created:</td><td>{{CreatedDate}}</td></tr>
+            {{/CreatedDate}}
+
+            <!--Service Name-->
+            {{#ServiceName}}
+            <tr><td style="font-weight: bold;">Request type:</td><td>{{ServiceName}}</td></tr>
+            {{/ServiceName}}
+
+            <!--Responsible-->
+            {{#ResponsibleName}}
+            <tr><td style="font-weight: bold;">Technician:</td><td>{{ResponsibleName}}</td></tr>
+            {{/ResponsibleName}}
+
+            <!--Status-->
+            {{#StatusName}}
+            <tr><td style="font-weight: bold;">Status:</td><td>{{StatusName}}</td></tr>
+            {{/StatusName}}
+
+        </table>
+    </td></tr> <!-- #ticket-details -->
+
+    <tr><td style="height: 75px; padding: 2%; text-align: center;">
+        <a id="link-to-ticket" style="background-color: #2268ab; border-radius: 12px; color: white; display: inline-block; font-size: 25px; padding: 12px 24px; text-decoration: none;" href="{{ClientUrl}}">View this ticket</a>
+    </td></tr>
+<!-- ⇑ EMAIL BODY ⇑ -->
+    
+<!-- ⇓ EMAIL FOOTER ⇓ -->     
+    <tr><td id="quicklinks" style="padding: 2%;">
+        <table style="width: 100%"><tr><td style="padding: 1%; text-align: center; vertical-align: top; width: 33%;">
+            <a id="quicklink-tickets" style="text-decoration: none;" href="https://services.biola.edu/TDClient/75/Portal/Requests/TicketRequests/">
+                <img src="https://jasonbiola.github.io/TDX/images/icons/tickets-100x100.png" style="width: 100px;"/>
+                <h3 style="margin-bottom: 0;">View My Tickets</h3>
+            </a>
+        </td>
+        <td style="padding: 1%; text-align: center; vertical-align: top; width: 33%;">
+            <a id="quicklink-service-catalog" style="text-decoration: none;"
+            href="https://services.biola.edu/TDClient/75/Portal/Requests/ServiceCatalog">
+                <img src="https://jasonbiola.github.io/TDX/images/icons/service-catalog-100x100.png" style="width: 100px;"/>
+                <h3 style="margin-bottom: 0;">Service Catalog</h3>
+            </a>
+        </td>
+        <td style="padding: 1%; text-align: center; vertical-align: top; width: 33%;">
+            <a id="quicklink-kb" style="text-decoration: none;" href="https://services.biola.edu/TDClient/75/Portal/KB/">
+                <img src="https://jasonbiola.github.io/TDX/images/icons/knowledge-base-100x100.png" style="width: 100px;"/>
+                <h3 style="margin-bottom: 0;">Knowledge Base</h3>
+            </a>
+        </td></tr></table>  
+    </td></tr> <!-- quicklinks -->
+    <tr><td style="padding: 2%;"><hr style="border-top: 1px solid #2268ab; margin: 0 auto; width: 80%;"></td></tr>
+    <tr><td id="logo" style="text-align: center; margin: auto; max-width: 600px; min-width: 330px; padding: 2%;">
+        <img src="https://jasonbiola.github.io/TDX/images/icons/biola-logo-black-text-290x80.png" style="height: 80px; object-fit: contain; width: 80%;"/>
+    </td></tr> <!-- #logo -->
+    
+    </td></tr>
+<!-- ⇑ EMAIL FOOTER ⇑ -->
+</table>

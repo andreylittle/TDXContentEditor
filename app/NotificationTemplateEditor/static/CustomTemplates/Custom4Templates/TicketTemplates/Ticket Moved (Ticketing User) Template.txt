@@ -1,0 +1,137 @@
+<!--Container Table-->
+  <table style="width: 100%;" cellpadding="3" cellspacing="0" border="0">
+<!--Comments/Notes Section-->
+
+<tr>
+      <td>
+        <table cellpadding="5" cellspacing="0" border="0" style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+          <!--Header-->
+          <tr>
+            <td style="font-size: 12px; font-weight: bold; color: [consolidated_Header1Color]; background-color: [consolidated_TableColor]">Moved
+            </td>
+          </tr>
+          <!--Content-->
+          <tr>
+            <td style="font-size: 12px; line-height: 18px">{{UpdateCreatedUserFullName}} moved this {{ClassificationNameLower}} on {{UpdateCreatedDate}}.<br />
+              <br />
+              {{{UpdateText}}}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>    
+    <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+    {{#IsNotMultipleItems}}
+	  </span>
+    <!--Summary Section-->
+    <tr>
+      <td>
+        <table cellpadding="5" cellspacing="0" border="0" style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif;">
+          <!--Header-->
+          <tr>
+            <td style="font-size: 12px; font-weight: bold; color: [consolidated_Header1Color]; background-color: [consolidated_TableColor]">{{ClassificationName}} Details
+            </td>
+          </tr>
+          <!--ID-->
+          <tr>
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Ticket Number: </strong>{{ID}}
+            </td>
+          </tr>
+<!--Date Created-->
+          <tr>
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Date Created: </strong>{{CreatedDate}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{#DateModified}}
+			</span>
+          <!--Date Modified-->
+          <tr>
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Date Modified: </strong>{{ModifiedDate}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/DateModified}}
+         {{#RequestorFullName}}
+			</span>
+          <!--Requestor-->
+          <tr>
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Requestor: </strong>{{RequestorFullName}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/RequestorFullName}}
+         {{#UrgencyName}}
+			</span>
+          <!--Urgency-->
+          <tr>
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Urgency: </strong>{{UrgencyName}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/UrgencyName}}
+			</span>
+           <!--Acct/Dept-->
+          <tr>
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Acct/Dept: </strong>{{AccountName}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+        {{#RequestorPhone}}
+			</span>
+          <!--RequestorPhone-->
+          <tr>
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Phone Number: </strong>{{RequestorPhone}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/RequestorPhone}}
+			</span>
+         <!--Service-->
+          <tr>
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Service: </strong>{{ServiceName}}
+            </td>
+          </tr>
+          <!--Title-->
+          <tr>
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Title: </strong>{{Title}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{#Description}}
+			</span>
+          <!--Description-->
+          <tr>
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>Description: </strong>{{{Description}}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/Description}}
+
+         {{#CustomAttributes}}
+			</span>
+          <!--Custom Attributes-->
+          <tr>
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>{{Name}}: </strong>{{Value}}
+            </td>
+          </tr>
+          <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+          {{/CustomAttributes}}
+			</span>
+          <!--TDNext Tickets-->
+          <tr>
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>TDNext Tickets: </strong><a href="{{NextTicketsUrl}}">{{NextTicketsUrl}}</a>
+            </td>
+          </tr>
+          <!--TDMobile-->
+          <tr>
+            <td style="font-size: 12px; color: [consolidated_Header2Color]; padding-top: 5px; border-top: 1px solid #c1c1c1;"><strong>TDMobile: </strong><a href="{{MobileUrl}}">{{MobileUrl}}</a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <span style="font-family: 'Segoe UI', Helvetica, Verdana, Arial, sans-serif; font-size: 10px">
+    {{/IsNotMultipleItems}}
+	  </span>
+  </table>

@@ -1,27 +1,70 @@
 {% extends "base.html" %}
 {% block head %}
-      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('HTMLModuleEditor.static',filename='home.css') }}">
-      <script src= "{{ url_for('HTMLModuleEditor.static',filename='home.js') }}"></script>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('HtmlModuleEditor.static',filename='home.css') }}">
+<script src= "{{ url_for('HtmlModuleEditor.static',filename='home.js') }}"></script>
 {% endblock %}
 {% block body %}
-      <div class="sidenav">
-             <img src="/static/TDX Graphics/TDX Icon fullcolor_rounded square.png" alt="tdx logo"><span class="titleText">HTML Module Editor v1</span>
+<div class="sidenav">
+   <img src="/static/TDX Graphics/TDX Icon fullcolor_rounded square.png" alt="tdx logo"><span class="titleText">HTML Module Editor v1</span>
+    <a>Module 1 Tiles</a>
+   <a id="changeLog" href="/ChangeLog">Change Log</a>
+</div>
+<div class="template-main-content-body">
+   <div class="template-information-list">
+      <!--             Module 1-->
+      <div id="defaultTempalteAnchor" class="template-edit">
+      <br>
+          <h2>Module 1 Card Tiles</h2>
+      <br>
 
-
-         <a id="changeLog" href="/ChangeLog">Change Log</a>
-
-
-      </div>
-      <div class="template-main-content-body">
-         <h1>Coming Soon</h1>
-         <div class="template-information-list">
-<!--             Defaulted Template-->
-            <div id="defaultTempalteAnchor" class="template-edit">
+         <form method="post" action="{{url_for('HtmlModuleEditor.Template1Preview')}}">
+         {% for i in range(1, 5) %}
+            <!--             Tile 1 -->
+            <p>Tile {{ i }} </p>
+            <div class="QuestionGroup">
+               <div class="row g-3">
+                  <div class="col">
+                     <label for="tile{{ i }}_icon" class="form-label required">Tile {{ i }} Icon</label>
+                     <select class="form-select" aria-label="Default select example" id="tile{{ i }}_icon" name="tile{{ i }}_icon">
+                        {% for icon in icons %}
+                        <option value="{{ icon }}"><i class="{{icon}}"></i> {{ icon }}</option>
+                        {% endfor %}
+                     </select>
+                  </div>
+                  <div class="col">
+                     <label for="tile{{ i }}_Title" class="form-label required">Tile {{ i }} Title</label>
+                     <input type="input" required class="form-control" id="tile{{ i }}_Title" name="tile{{ i }}_Title">
+                  </div>
+                  <div class="col">
+                     <label for="tile{{ i }}_SubTitleText" class="form-label required">Tile {{ i }} Secondary Text</label>
+                     <input type="input" required class="form-control" id="tile{{ i }}_SubTitleText" name="tile{{ i }}_SubTitleText">
+                  </div>
+               </div>
             </div>
-            <div class="template-preview">
-<!--               {{default_template_preview|safe}}-->
+            <div class="QuestionGroup">
+               <div class="row g-3">
+                  <div class="col">
+                     <label for="tile{{ i }}_ButtonText" class="form-label required">Tile {{ i }} Button Text</label>
+                     <input type="input" required class="form-control" id="tile{{ i }}_ButtonText" name="tile{{ i }}_ButtonText">
+                  </div>
+                  <div class="col">
+                     <label for="tile{{ i }}_ButtonLink" class="form-label required">Tile {{ i }} Button Link</label>
+                     <input type="input" required class="form-control" id="tile{{ i }}_ButtonLink" name="tile{{ i }}_ButtonLink">
+                  </div>
+               </div>
             </div>
+            <!--             Tile 2 -->
+         {% endfor %}
 
-         </div>
+
+
+            <button type="submit" class="btn btn-success">Generate Preview and Code</button>
+            <em style="font-size: 10px;">Opens a New Tab With Preview</em>
+         </form>
       </div>
+      <div class="template-preview">
+         <img src="/static/UncwCardRow.jpg" width="100%">
+      </div>
+   </div>
+</div>
 {% endblock %}

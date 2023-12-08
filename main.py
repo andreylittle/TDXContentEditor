@@ -12,7 +12,7 @@ allowed_routes = {
     "/NotificationEditor/": ["GET"],
     "/NotificationEditor/ChangeLog": ["GET"],
     "/NotificationEditor/DownloadDefaultTemplates": ["POST"],
-    "/ModuleEditor/": ["GET"],
+    "/HtmlModuleEditor/": ["GET"],
 }
 @app.before_request
 def block_ip():

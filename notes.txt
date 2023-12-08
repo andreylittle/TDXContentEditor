@@ -1,0 +1,27 @@
+customers with good templates to add
+
+- biola
+    tickets
+
+snow college
+    tickets
+    project
+
+
+St. Francis Xavier University
+    tickets
+    project
+    kb
+
+
+Future Features to Add
+    back to top button
+    save settings for later
+        thinking of getting all form values from queries and checking query values and setting them into form values
+    collapse side nav function
+    depreciate html module editor
+    add more project styled templates
+
+    figure out a way to templatetize the main page into a jinga template (will be useful once I hit more than 5 templates)
+
+    figure out a way on how to create a queue processor for downloading tempalates to users - this will be when traffic really increases on the server

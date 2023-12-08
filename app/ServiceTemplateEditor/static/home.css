@@ -102,24 +102,3 @@ form .QuestionGroup{
     left: 0;
     bottom: 60px;
 }
-.bootstrap3{
-
-}
-
-.bootstrap3 .btn-primary{
-    color:#fff;
-    background-color:#337ab7;
-    border-color:#2e6da4
-}
-.bootstrap3 .btn-default{
-    color: #2b2b2b;
-    background-color: #fff;
-    border-color: #ccc;
-}
-.bootstrap3 .shadow-box{
-    box-shadow: 0 1px 12px -3px #000;
-}
-.bootstrap3 .panel-body{
-    padding: 15px;
-
-}
