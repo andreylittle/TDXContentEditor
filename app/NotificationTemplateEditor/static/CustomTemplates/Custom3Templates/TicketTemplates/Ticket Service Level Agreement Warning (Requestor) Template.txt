@@ -109,7 +109,7 @@
                                          <table style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background: #ffffff; padding-bottom: 1em;">
                                            <tr>
                                              <td>
-                                               <img src="[custom2_headerImageLink]"  class="js-logo img-responsive">
+                                               <img src="[custom3_headerImageLink]"  class="js-logo img-responsive">
                                            </tr>
                                          </table>
                                        </td>

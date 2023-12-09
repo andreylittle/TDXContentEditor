@@ -25,3 +25,7 @@ Future Features to Add
     figure out a way to templatetize the main page into a jinga template (will be useful once I hit more than 5 templates)
 
     figure out a way on how to create a queue processor for downloading tempalates to users - this will be when traffic really increases on the server
+
+    refresh preview template to original value
+
+    figure out a way to use default values

@@ -140,6 +140,32 @@ def download_defaultTemplates():
 
             }
 
+        },
+        {
+            'formid': 5,
+            'exportFolderBase': f'{basepath}\exports\Custom4ExportFolder - {current_time}',
+            'zipFilePath': f'./exports/Custom4ExportFolder - {current_time}/',
+            'mainFolderLocation': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom4Templates',
+            'fields': [request.form.to_dict()],
+            'tickets': {
+                'CheckboxKey': 'custom_4_ticket_checkbox',
+                'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom4Templates\TicketTemplates',
+                'ExportFolder': fr'{basepath}\exports\Custom4ExportFolder - {current_time}\TicketTemplates'
+
+            },
+            'knowledgebase': {
+                'CheckboxKey': 'custom_4_knowledgebase_checkbox',
+                'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom4Templates\KnowledgebaseTemplates',
+                'ExportFolder': fr'{basepath}\exports\Custom4ExportFolder - {current_time}\KnowledgebaseTemplates'
+
+            },
+            'projects': {
+                'CheckboxKey': 'custom_4_project_checkbox',
+                'BaseTemplateFolder': fr'{basepath}\app\NotificationTemplateEditor\static\CustomTemplates\Custom4Templates\ProjectTemplates',
+                'ExportFolder': fr'{basepath}\exports\Custom4ExportFolder - {current_time}\ProjectTemplates'
+
+            }
+
         }
 
     ]

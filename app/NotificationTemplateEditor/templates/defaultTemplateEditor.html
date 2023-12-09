@@ -1,399 +1,373 @@
 {% extends "base.html" %}
 {% block head %}
-      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('NotificationEditor.static',filename='home.css') }}">
-      <script src= "{{ url_for('NotificationEditor.static',filename='home.js') }}"></script>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('NotificationEditor.static',filename='home.css') }}">
+<script src= "{{ url_for('NotificationEditor.static',filename='home.js') }}"></script>
 {% endblock %}
 {% block body %}
-      <div class="sidenav" id="NotificationTemplateSideNav">
-             <img src="/static/TDX Graphics/TDX Icon fullcolor_rounded square.png" alt="tdx logo"><span class="titleText">Notification Editor v2</span>
-         <a href="#defaultTempalteAnchor">Default Template</a>
-         <a href="#CustomTemplate1Anchor">Custom Template #1</a>
-         <a href="#CustomTemplate2Anchor">Custom Template #2</a>
-          <a href="#CustomTemplate3Anchor">Custom Template #3</a>
-          <a href="#CustomTemplate4Anchor">Custom Template #4</a>
-         <a id="changeLog" href="./ChangeLog">Change Log</a>
-
-
+<div class="sidenav" id="NotificationTemplateSideNav">
+   <img src="/static/TDX Graphics/TDX Icon fullcolor_rounded square.png" alt="tdx logo"><span class="titleText">Notification Editor v2</span>
+   <a href="#defaultTempalteAnchor">Default Template</a>
+   <a href="#CustomTemplate1Anchor">Custom Template #1</a>
+   <a href="#CustomTemplate2Anchor">Custom Template #2</a>
+   <a href="#CustomTemplate3Anchor">Custom Template #3</a>
+   <a href="#CustomTemplate4Anchor">Custom Template #4</a>
+   <a id="changeLog" href="./ChangeLog">Change Log</a>
+</div>
+<div class="template-main-content-body">
+   <div class="template-information-list">
+      <!--             Defaulted Template-->
+      <div id="defaultTempalteAnchor" class="template-edit">
+         <br>
+         <h2>Default TeamDynamix Template</h2>
+         <br>
+         <p style="font-weight: bolder">Click on one of the color pickers, either paste the color code or use the eye dropper tool to alter the color for the corresponding sections on the template. Colors will be updated on the right preview.</p>
+         <form method="post" action="{{url_for('NotificationEditor.download_defaultTemplates',formid=1)}}">
+            <div class="QuestionGroup">
+               <label for="Header1" class="form-label">Header 1 Color (Refers to "Comment" and "Incident Details")</label>
+               <p id="Header1_txtvalue"></p>
+               <input type="color" class="form-control form-control-color" id="Header1" name="Header1Color" value="#FFFFFF" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'default-template-preview', 'default_h1', null, null, 'color')">
+            </div>
+            <div class="QuestionGroup">
+               <label for="Header2" class="form-label">Text Color:</label>
+               <p id="Header2_txtvalue"></p>
+               <input type="color" class="form-control form-control-color" id="Header2" name="Header2Color" value="#515A61" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'default-template-preview', 'default_text',null, null,'color')">
+            </div>
+            <div class="QuestionGroup">
+               <label for="TableColor" class="form-label">Table/Border Color:</label>
+               <p id="TableColor_txtvalue"></p>
+               <input type="color" class="form-control form-control-color" name="TableColor" id="TableColor" value="#0072c6" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'default-template-preview', 'default_table',null,null,'background-color'), updateDefaultedPreview(this.value, 'default-template-preview', 'default_table_boarder',null,null,'borderColor')">
+            </div>
+            <div class="QuestionGroup">
+               <p>Select what Templates you would like to generate</p>
+               <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckTicket" name="Ticket_CheckBox" checked>
+                  <label class="form-check-label" for="flexCheckTicket">
+                  Generate Ticket Notification Templates
+                  </label>
+               </div>
+               <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckKB" name="KB_CheckBox" >
+                  <label class="form-check-label" for="flexCheckKB">
+                  Generate Knowledgebase Notification Templates
+                  </label>
+               </div>
+               <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckProject" name="Project_CheckBox" >
+                  <label class="form-check-label" for="flexCheckProject">
+                  Generate Project Notification Templates
+                  </label>
+               </div>
+            </div>
+            <button type="submit" class="btn btn-success">Generate Notification Templates</button>
+            <em style="font-size: 10px;">Downloads a zip file w/ txt documents containing new styling</em>
+         </form>
       </div>
-      <div class="template-main-content-body">
-         <div class="template-information-list">
-<!--             Defaulted Template-->
-            <div id="defaultTempalteAnchor" class="template-edit">
-               <br>
-               <h2>Default TeamDynamix Template</h2>
-               <br>
-               <p style="font-weight: bolder">Click on one of the color pickers, either paste the color code or use the eye dropper tool to alter the color for the corresponding sections on the template. Colors will be updated on the right preview.</p>
-               <form method="post" action="{{url_for('NotificationEditor.download_defaultTemplates',formid=1)}}">
-                  <div class="QuestionGroup">
-                     <label for="Header1" class="form-label">Header 1 Color (Refers to "Comment" and "Incident Details")</label>
-                     <p id="Header1_txtvalue"></p>
-                     <input type="color" class="form-control form-control-color" id="Header1" name="Header1Color" value="#FFFFFF" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'default-template-preview', 'default_h1', null, null, 'color')">
-                  </div>
-                  <div class="QuestionGroup">
-                     <label for="Header2" class="form-label">Text Color:</label>
-                     <p id="Header2_txtvalue"></p>
-                     <input type="color" class="form-control form-control-color" id="Header2" name="Header2Color" value="#515A61" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'default-template-preview', 'default_text',null, null,'color')">
-                  </div>
-                  <div class="QuestionGroup">
-                     <label for="TableColor" class="form-label">Table/Border Color:</label>
-                     <p id="TableColor_txtvalue"></p>
-                     <input type="color" class="form-control form-control-color" name="TableColor" id="TableColor" value="#0072c6" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'default-template-preview', 'default_table',null,null,'background-color'), updateDefaultedPreview(this.value, 'default-template-preview', 'default_table_boarder',null,null,'borderColor')">
-                  </div>
-                  <div class="QuestionGroup">
-                     <p>Select what Templates you would like to generate</p>
-                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckTicket" name="Ticket_CheckBox" checked>
-                        <label class="form-check-label" for="flexCheckTicket">
-                        Generate Ticket Notification Templates
-                        </label>
-                     </div>
-                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckKB" name="KB_CheckBox" >
-                        <label class="form-check-label" for="flexCheckKB">
-                        Generate Knowledgebase Notification Templates
-                        </label>
-                     </div>
-                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckProject" name="Project_CheckBox" >
-                        <label class="form-check-label" for="flexCheckProject">
-                        Generate Project Notification Templates
-                        </label>
-                     </div>
-                  </div>
-                  <button type="submit" class="btn btn-success">Generate Notification Templates</button>
-                  <em style="font-size: 10px;">Downloads a zip file w/ txt documents containing new styling</em>
-               </form>
+      <div class="template-preview">
+         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnRadioDefault" id="DefaultRequestorTemp" autocomplete="off" checked onclick="showHideTemplates( 'default-template-preview-technician', 'default-template-preview-requestor')">
+            <label class="btn btn-outline-primary" for="DefaultRequestorTemp">Requestor Template Preview</label>
+            <input type="radio" class="btn-check" name="btnRadioDefault" id="DefaultTicketingUserTemp" autocomplete="off" onclick="showHideTemplates( 'default-template-preview-requestor', 'default-template-preview-technician')">
+            <label class="btn btn-outline-primary" for="DefaultTicketingUserTemp">Technician Template Preview</label>
+         </div>
+         {{default_template_preview|safe}}
+      </div>
+      <!--Consolidated custom 1-->
+      <div id="CustomTemplate1Anchor" class="template-edit" >
+         <br>
+         <h2>Custom Template #1</h2>
+         <br>
+         <p style="font-weight: bolder">Click on one of the color pickers, either paste the color code or use the <br>eye dropper tool to alter the color for the corresponding sections on the template.</p>
+         <form method="post" action="{{url_for('NotificationEditor.download_defaultTemplates',formid=2)}}">
+            <div class="QuestionGroup">
+               <label for="consolidated_Header1" class="form-label">Header 1 Color (Refers to "Comment" and "Incident Details")</label>
+               <p id="consolidated_Header1_txtvalue"></p>
+               <input type="color" class="form-control form-control-color" id="consolidated_Header1" name="consolidated_Header1Color" value="#FFFFFF" title="Choose your color" oninput="updateFieldColor(this),updateDefaultedPreview(this.value, 'custom1-template-preview', 'custom1_h1', null, null,'color')">
             </div>
-            <div class="template-preview">
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="btnRadioDefault" id="DefaultRequestorTemp" autocomplete="off" checked onclick="showHideTemplates( 'default-template-preview-technician', 'default-template-preview-requestor')">
-                    <label class="btn btn-outline-primary" for="DefaultRequestorTemp">Requestor Template Preview</label>
-
-                    <input type="radio" class="btn-check" name="btnRadioDefault" id="DefaultTicketingUserTemp" autocomplete="off" onclick="showHideTemplates( 'default-template-preview-requestor', 'default-template-preview-technician')">
-                    <label class="btn btn-outline-primary" for="DefaultTicketingUserTemp">Technician Template Preview</label>
-                </div>
-               {{default_template_preview|safe}}
-
+            <div class="QuestionGroup">
+               <label for="consolidated_Header2" class="form-label">Text Color (Refers to ALL text excuding H1 text)</label>
+               <p id="consolidated_Header2_txtvalue"></p>
+               <input type="color" class="form-control form-control-color" id="consolidated_Header2" name="consolidated_Header2Color" value="#515A61" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom1-template-preview', 'custom1_text', null , null,'color')">
             </div>
-
-<!--Consolidated custom 1-->
-            <div id="CustomTemplate1Anchor" class="template-edit" >
-               <br>
-               <h2>Custom Template #1</h2>
-               <br>
-               <p style="font-weight: bolder">Click on one of the color pickers, either paste the color code or use the <br>eye dropper tool to alter the color for the corresponding sections on the template.</p>
-               <form method="post" action="{{url_for('NotificationEditor.download_defaultTemplates',formid=2)}}">
-                  <div class="QuestionGroup">
-                     <label for="consolidated_Header1" class="form-label">Header 1 Color (Refers to "Comment" and "Incident Details")</label>
-                     <p id="consolidated_Header1_txtvalue"></p>
-                     <input type="color" class="form-control form-control-color" id="consolidated_Header1" name="consolidated_Header1Color" value="#FFFFFF" title="Choose your color" oninput="updateFieldColor(this),updateDefaultedPreview(this.value, 'custom1-template-preview', 'custom1_h1', null, null,'color')">
-                  </div>
-                  <div class="QuestionGroup">
-                     <label for="consolidated_Header2" class="form-label">Text Color (Refers to ALL text excuding H1 text)</label>
-                     <p id="consolidated_Header2_txtvalue"></p>
-                     <input type="color" class="form-control form-control-color" id="consolidated_Header2" name="consolidated_Header2Color" value="#515A61" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom1-template-preview', 'custom1_text', null , null,'color')">
-                  </div>
-                  <div class="QuestionGroup">
-                     <label for="consolidated_TableColor" class="form-label">Table/Border Color:</label>
-                     <p id="consolidated_TableColor_txtvalue"></p>
-                     <input type="color" class="form-control form-control-color" name="consolidated_TableColor" id="consolidated_TableColor" value="#0072c6" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom1-template-preview', 'custom1_table', null , null,'background-color')">
-                  </div>
-                  <div class="QuestionGroup">
-                     <p>Select what Templates you would like to generate</p>
-                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="consolidated_flexCheckTicket" name="consolidated_Ticket_CheckBox" checked>
-                        <label class="form-check-label" for="flexCheckTicket">
-                        Generate Ticket Notification Templates
-                        </label>
-                     </div>
-                  </div>
-                  <button type="submit" class="btn btn-success">Generate Notification Templates</button>
-                  <em style="font-size: 10px;">Downloads a zip file w/ txt documents containing new styling</em>
-               </form>
+            <div class="QuestionGroup">
+               <label for="consolidated_TableColor" class="form-label">Table/Border Color:</label>
+               <p id="consolidated_TableColor_txtvalue"></p>
+               <input type="color" class="form-control form-control-color" name="consolidated_TableColor" id="consolidated_TableColor" value="#0072c6" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom1-template-preview', 'custom1_table', null , null,'background-color')">
             </div>
-            <div class="template-preview">
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="btnRadioCustom1" id="Custom1RequestorTemp" autocomplete="off" checked onclick="showHideTemplates( 'custom1-template-preview-technician', 'custom1-template-preview-requestor')">
-                    <label class="btn btn-outline-primary" for="Custom1RequestorTemp">Requestor Template Preview</label>
-
-                    <input type="radio" class="btn-check" name="btnRadioCustom1" id="Custom1TicketingUserTemp" autocomplete="off" onclick="showHideTemplates( 'custom1-template-preview-requestor', 'custom1-template-preview-technician')">
-                    <label class="btn btn-outline-primary" for="Custom1TicketingUserTemp">Technician Template Preview</label>
-                </div>
-               {{custom1_template_preview|safe}}
+            <div class="QuestionGroup">
+               <p>Select what Templates you would like to generate</p>
+               <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="consolidated_flexCheckTicket" name="consolidated_Ticket_CheckBox" checked>
+                  <label class="form-check-label" for="flexCheckTicket">
+                  Generate Ticket Notification Templates
+                  </label>
+               </div>
             </div>
-<!--OU Template Custom 2-->
-            <div id="CustomTemplate2Anchor" class="template-edit">
-               <br>
-               <h2>Custom Ticket Template #2</h2>
-               <br>
-               <p style="font-weight: bolder">Click on one of the color pickers, either paste the color code or use the <br>eye dropper tool to alter the color for the corresponding sections on the template.</p>
-               <form method="post" action="{{url_for('NotificationEditor.download_defaultTemplates',formid=3)}}" id="custom2_template_editor_form">
-                  <div class="QuestionGroup">
-                     <div class="row g-3">
-                        <div class="col">
-                           <label for="custom2_tableColor" class="form-label">Main Table Color</label>
-                           <p id="custom2_tableColor_txtvalue"></p>
-                           <input type="color" class="form-control form-control-color" id="custom2_tableColor" name="custom2_tableColor" value="#21145f" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom2-template-preview', 'custom2_tableColor', null , null,'background-color'), updateDefaultedPreview(this.value, 'custom2-template-preview', 'custom2_boarderColor', null , null,'border-color')">
-                        </div>
-                        <div class="col">
-                           <label for="custom2_ticketLinkColor" class="form-label">Ticket Link Color</label>
-                           <p id="custom2_ticketLinkColor_txtvalue"></p>
-                           <input type="color" class="form-control form-control-color" id="custom2_ticketLinkColor" name="custom2_ticketLinkColor" value="#21145f" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom2-template-preview', 'custom2_ticketLinkColor', null , null,'color')">
-                        </div>
-
-                     </div>
+            <button type="submit" class="btn btn-success">Generate Notification Templates</button>
+            <em style="font-size: 10px;">Downloads a zip file w/ txt documents containing new styling</em>
+         </form>
+      </div>
+      <div class="template-preview">
+         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnRadioCustom1" id="Custom1RequestorTemp" autocomplete="off" checked onclick="showHideTemplates( 'custom1-template-preview-technician', 'custom1-template-preview-requestor')">
+            <label class="btn btn-outline-primary" for="Custom1RequestorTemp">Requestor Template Preview</label>
+            <input type="radio" class="btn-check" name="btnRadioCustom1" id="Custom1TicketingUserTemp" autocomplete="off" onclick="showHideTemplates( 'custom1-template-preview-requestor', 'custom1-template-preview-technician')">
+            <label class="btn btn-outline-primary" for="Custom1TicketingUserTemp">Technician Template Preview</label>
+         </div>
+         {{custom1_template_preview|safe}}
+      </div>
+      <!--OU Template Custom 2-->
+      <div id="CustomTemplate2Anchor" class="template-edit">
+         <br>
+         <h2>Custom Ticket Template #2</h2>
+         <br>
+         <p style="font-weight: bolder">Click on one of the color pickers, either paste the color code or use the <br>eye dropper tool to alter the color for the corresponding sections on the template.</p>
+         <form method="post" action="{{url_for('NotificationEditor.download_defaultTemplates',formid=3)}}" id="custom2_template_editor_form">
+            <div class="QuestionGroup">
+               <div class="row g-3">
+                  <div class="col">
+                     <label for="custom2_tableColor" class="form-label">Main Table Color</label>
+                     <p id="custom2_tableColor_txtvalue"></p>
+                     <input type="color" class="form-control form-control-color" id="custom2_tableColor" name="custom2_tableColor" value="#21145f" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom2-template-preview', 'custom2_tableColor', null , null,'background-color'), updateDefaultedPreview(this.value, 'custom2-template-preview', 'custom2_boarderColor', null , null,'border-color')">
                   </div>
-
-                  <div class="QuestionGroup">
-                     <label for="custom2_headerImageLink" class="form-label required">Header Image Link</label>
-                     <em style="font-size: 10px;"><br>Must be a valid image link </em>
-                     <p id="custom2_headerImageLink_txtvalue"></p>
-                     <input type="input" required class="form-control" id="custom2_headerImageLink" name="custom2_headerImageLink" placeholder="https://solutions.teamdynamix.com/TDPortal/BE/Logo/91/0" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_clientportalimage','custom2_clientportalimage_tech'],'src')">
+                  <div class="col">
+                     <label for="custom2_ticketLinkColor" class="form-label">Ticket Link Color</label>
+                     <p id="custom2_ticketLinkColor_txtvalue"></p>
+                     <input type="color" class="form-control form-control-color" id="custom2_ticketLinkColor" name="custom2_ticketLinkColor" value="#21145f" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom2-template-preview', 'custom2_ticketLinkColor', null , null,'color')">
                   </div>
-                  <div class="QuestionGroup">
-                     <div class="row g-3">
-                        <div class="col">
-                           <label for="custom2_headerImageWidth" class="form-label required">Header Image Width</label>
-                           <p id="custom2_headerImageWidth_txtvalue"></p>
-                           <input type="number" required class="form-control" id="custom2_headerImageWidth" name="custom2_headerImageWidth" placeholder="200" value="200" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_clientportalimage','custom2_clientportalimage_tech'],'width')">
-                        </div>
-                        <div class="col">
-                           <label for="custom2_headerImageHeight" class="form-label required">Header Image Height</label>
-                           <p id="custom2_headerImageHeight_txtvalue"></p>
-                           <input type="number" required class="form-control" id="custom2_headerImageHeight" name="custom2_headerImageHeight" placeholder="80" value="80" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_clientportalimage','custom2_clientportalimage_tech'],'height')">
-                        </div>
-                     </div>
-                  </div>
-                   <div class="QuestionGroup">
-                     <label for="custom2_ClientPortalURL" class="form-label required">Client Portal URL</label>
-                     <p id="custom2_ClientPortalURL_txtvalue"></p>
-                     <input type="input" required class="form-control" id="custom2_ClientPortalURL" name="custom2_ClientPortalURL" placeholder="https://solutions.teamdynamix.com" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_clientportalURL','custom2_clientportalURL_tech'],'href')">
-                  </div>
-                  <div class="QuestionGroup">
-                     <label for="custom2_UpdateText" class="form-label required">Update Text</label>
-                     <em style="font-size: 10px;"><br>Supports HTML <br> </em>
-                     <p id="custom2_UpdateText_txtvalue"></p>
-                     <input type="input" required class="form-control" id="custom2_UpdateText" name="custom2_UpdateText" placeholder="To update this ticket you may reply to this email or view the status of the ticket by visiting the Solutions Service Portal." oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_updateText'],'innerHTML')">
-                  </div>
-                  <div class="QuestionGroup">
-                     <label for="custom2_BaseText" class="form-label required">Bottom Table Text</label>
-                     <em style="font-size: 10px;"><br>Supports HTML </em>
-                     <p id="custom2_BaseText_txtvalue"></p>
-                     <input type="input" required class="form-control" id="custom2_BaseText" name="custom2_BaseText" placeholder="For additional assistance, please create a new support ticket" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_bottomText','custom2_bottomText_tech'],'innerHTML')">
-                  </div>
-                  <div class="QuestionGroup">
-                     <label for="custom2_BaseTextColor" class="form-label">Bottom Text Color</label>
-                     <p id="custom2_BaseTextColor_txtvalue"></p>
-                     <input type="color" class="form-control form-control-color" id="custom2_BaseTextColor" name="custom2_BaseTextColor" value="#FFFFFF" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_bottomText','custom2_bottomText_tech'],'color')">
-
-                  </div>
-                  <div class="QuestionGroup">
-                     <p>Select what Templates you would like to generate</p>
-                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="custom2_flexCheckTicket" name="custom_2_ticket_checkbox" checked>
-                        <label class="form-check-label" for="flexCheckTicket">
-                        Generate Ticket Notification Templates
-                        </label>
-                     </div>
-                  </div>
-                  <button type="submit" class="btn btn-success">Generate Notification Templates</button>
-                  <em style="font-size: 10px;">Downloads a zip file w/ txt documents containing new styling</em>
-                  <script>
-                     document.getElementById('custom2_template_editor_form').addEventListener('keydown', function(event) {
-                        if (event.key === 'Enter') {
-                           event.preventDefault();
-                        }});
-                  </script>
-               </form>
+               </div>
             </div>
-            <div class="template-preview">
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="btnRadioCustom2" id="Custom2RequestorTemp" autocomplete="off" checked onclick="showHideTemplates( 'custom2-template-preview-technician', 'custom2-template-preview-requestor')">
-                    <label class="btn btn-outline-primary" for="Custom2RequestorTemp">Requestor Template Preview</label>
-
-                    <input type="radio" class="btn-check" name="btnRadioCustom2" id="Custom2TicketingUserTemp" autocomplete="off" onclick="showHideTemplates( 'custom2-template-preview-requestor', 'custom2-template-preview-technician')">
-                    <label class="btn btn-outline-primary" for="Custom2TicketingUserTemp">Technician Template Preview</label>
-                </div>
-               {{custom2_template_preview|safe}}
+            <div class="QuestionGroup">
+               <label for="custom2_headerImageLink" class="form-label required">Header Image Link</label>
+               <em style="font-size: 10px;"><br>Must be a valid image link </em>
+               <p id="custom2_headerImageLink_txtvalue"></p>
+               <input type="input" required class="form-control" id="custom2_headerImageLink" name="custom2_headerImageLink" placeholder="https://solutions.teamdynamix.com/TDPortal/BE/Logo/91/0" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_clientportalimage','custom2_clientportalimage_tech'],'src')">
             </div>
-
-<!--            Custom 3 MNPS Template-->
-            <div id="CustomTemplate3Anchor" class="template-edit">
-               <br>
-               <h2>Custom Ticket Template #3</h2>
-               <br>
-               <p style="font-weight: bolder">Click on one of the color pickers, either paste the color code or use the <br>eye dropper tool to alter the color for the corresponding sections on the template.</p>
-               <form method="post" action="{{url_for('NotificationEditor.download_defaultTemplates',formid=4)}}" id="custom3_template_editor_form">
-                  <div class="QuestionGroup">
-                      <label for="custom3_backgroundColor" class="form-label">Main Background Color</label>
-                      <p id="custom3_backgroundColor_txtvalue"></p>
-                      <input type="color" class="form-control form-control-color" id="custom3_backgroundColor" name="custom3_backgroundColor" value="#f6f6f6" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom3-template-preview', 'custom3_backgroundColor', null , null,'background-color')">
-
-
+            <div class="QuestionGroup">
+               <div class="row g-3">
+                  <div class="col">
+                     <label for="custom2_headerImageWidth" class="form-label required">Header Image Width</label>
+                     <p id="custom2_headerImageWidth_txtvalue"></p>
+                     <input type="number" required class="form-control" id="custom2_headerImageWidth" name="custom2_headerImageWidth" placeholder="200" value="200" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_clientportalimage','custom2_clientportalimage_tech'],'width')">
                   </div>
-                  <div class="QuestionGroup">
-                     <label for="custom3_headerImageLink" class="form-label required">Header Image Link (Works Best with Client Portal Logo)</label>
-                      <em style="font-size: 10px;"><br>Must be a valid image link </em>
-                     <p id="custom3_headerImageLink_txtvalue"></p>
-                     <input type="input" required class="form-control" id="custom3_headerImageLink" name="custom3_headerImageLink" placeholder="https://solutions.teamdynamix.com/TDPortal/BE/Logo/91/0" oninput="updateDefaultedPreview(this.value, 'custom3-template-preview', null, null , ['custom3_clientportalimage','custom3_clientportalimage-ticketingUser'],'src')">
+                  <div class="col">
+                     <label for="custom2_headerImageHeight" class="form-label required">Header Image Height</label>
+                     <p id="custom2_headerImageHeight_txtvalue"></p>
+                     <input type="number" required class="form-control" id="custom2_headerImageHeight" name="custom2_headerImageHeight" placeholder="80" value="80" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_clientportalimage','custom2_clientportalimage_tech'],'height')">
                   </div>
-
-                  <div class="QuestionGroup">
-                     <label for="custom3_SincerelyText" class="form-label required">Sincerely Text</label>
-                     <em style="font-size: 10px;"><br>Supports HTML <br> </em>
-                     <p id="custom3_SincerelyText_txtvalue"></p>
-                     <input type="input" required class="form-control" id="custom3_SincerelyText" name="custom3_SincerelyText" placeholder="<span style='font-weight: bold'> Digital Strategy &amp; Implementation</span><br> and <span style='font-weight: bold'>Technology Services</span>" oninput="updateDefaultedPreview(this.value, 'custom3-template-preview', null, null , ['custom3_sincerelyText_Requestor','custom3_sincerelyText_TicketingUser'],'innerHTML')">
-                  </div>
-                  <div class="QuestionGroup">
-                     <label for="custom3_BaseText" class="form-label required">Bottom Text</label>
-                     <em style="font-size: 10px;"><br>Supports HTML </em>
-                     <p id="custom3_BaseText_txtvalue"></p>
-                     <input type="input" required class="form-control" id="custom3_BaseText" name="custom3_BaseText" placeholder="<br>Technology Assistance Center<br>(p) 615.269.5956<br>Business hours: 8:00am–4:00pm CT" oninput="updateDefaultedPreview(this.value, 'custom3-template-preview', null, null , ['custom3_Bottom_Requestor','custom3_Bottom_TicketingUser'],'innerHTML')">
-                  </div>
-
-                  <div class="QuestionGroup">
-                     <p>Select what Templates you would like to generate</p>
-                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="custom3_flexCheckTicket" name="custom_3_ticket_checkbox" checked>
-                        <label class="form-check-label" for="flexCheckTicket">
-                        Generate Ticket Notification Templates
-                        </label>
-                     </div>
-                  </div>
-                  <button type="submit" class="btn btn-success">Generate Notification Templates</button>
-                  <em style="font-size: 10px;">Downloads a zip file w/ txt documents containing new styling</em>
-                  <script>
-                     document.getElementById('custom3_template_editor_form').addEventListener('keydown', function(event) {
-                        if (event.key === 'Enter') {
-                           event.preventDefault();
-                        }});
-                  </script>
-               </form>
+               </div>
             </div>
-            <div class="template-preview">
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="btnRadio" id="Custom3RequestorTemp" autocomplete="off" checked onclick="showHideTemplates( 'custom3-template-preview-TicketingUserView', 'custom3-template-preview-requestorView')">
-                    <label class="btn btn-outline-primary" for="Custom3RequestorTemp">Requestor Template Preview</label>
-
-                    <input type="radio" class="btn-check" name="btnRadio" id="Custom3TicketingUserTemp" autocomplete="off" onclick="showHideTemplates( 'custom3-template-preview-requestorView', 'custom3-template-preview-TicketingUserView')">
-                    <label class="btn btn-outline-primary" for="Custom3TicketingUserTemp">Technician Template Preview</label>
-                </div>
-                {{custom3_template_preview|safe}}
+            <div class="QuestionGroup">
+               <label for="custom2_ClientPortalURL" class="form-label required">Client Portal URL</label>
+               <p id="custom2_ClientPortalURL_txtvalue"></p>
+               <input type="input" required class="form-control" id="custom2_ClientPortalURL" name="custom2_ClientPortalURL" placeholder="https://solutions.teamdynamix.com" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_clientportalURL','custom2_clientportalURL_tech'],'href')">
             </div>
-
-
-<!--            Custom 4 Loyola Template-->
-            <div id="CustomTemplate4Anchor" class="template-edit">
-               <br>
-               <h2>Custom Ticket Template #4</h2>
-               <br>
-               <p style="font-weight: bolder">Click on one of the color pickers, either paste the color code or use the <br>eye dropper tool to alter the color for the corresponding sections on the template.</p>
-                <br>
-                <p style="color:red;">This does not contain Ticket Moved (Ticketing User Template)</p>
-               <form method="post" action="{{url_for('NotificationEditor.download_defaultTemplates',formid=4)}}" id="custom3_template_editor_form">
-
-                   <div class="QuestionGroup">
-                     <label for="custom4_headerImageLink" class="form-label required">Header Image Link (Refers to top Cloud Logo)</label>
-                      <em style="font-size: 10px;"><br>Must be a valid image link </em>
-                     <p id="custom4_headerImageLink_txtvalue"></p>
-                     <input type="input" required class="form-control" id="custom4_headerImageLink" name="custom4_headerImageLink" placeholder="https://solutions.teamdynamix.com/TDPortal/BE/Logo/91/0" oninput="updateDefaultedPreview(this.value, 'custom4-template-preview', null, null , ['custom-4-headerImage-requestor','custom-4-headerImage-ticketinguser'],'src')">
-                  </div>
-
-                  <div class="QuestionGroup">
-                     <label for="custom4_secondaryImageLink" class="form-label required">Small Logo Image Link (Refers to small TDX Logo)</label>
-                      <em style="font-size: 10px;"><br>Must be a valid image link </em>
-                     <p id="custom4_secondaryImageLink_txtvalue"></p>
-                     <input type="input" required class="form-control" id="custom4_secondaryImageLink" name="custom4_secondaryImageLink" placeholder="https://solutions.teamdynamix.com/TDPortal/BE/Logo/91/0" oninput="updateDefaultedPreview(this.value, 'custom4-template-preview', null, null , ['custom-4-secondLogoImage-requestor','custom-4-secondaryImage-ticketinguser'],'src')">
-                  </div>
-
-                  <div class="QuestionGroup">
+            <div class="QuestionGroup">
+               <label for="custom2_UpdateText" class="form-label required">Update Text</label>
+               <em style="font-size: 10px;"><br>Supports HTML <br> </em>
+               <p id="custom2_UpdateText_txtvalue"></p>
+               <input type="input" required class="form-control" id="custom2_UpdateText" name="custom2_UpdateText" placeholder="To update this ticket you may reply to this email or view the status of the ticket by visiting the Solutions Service Portal." oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_updateText'],'innerHTML')">
+            </div>
+            <div class="QuestionGroup">
+               <label for="custom2_BaseText" class="form-label required">Bottom Table Text</label>
+               <em style="font-size: 10px;"><br>Supports HTML </em>
+               <p id="custom2_BaseText_txtvalue"></p>
+               <input type="input" required class="form-control" id="custom2_BaseText" name="custom2_BaseText" placeholder="For additional assistance, please create a new support ticket" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_bottomText','custom2_bottomText_tech'],'innerHTML')">
+            </div>
+            <div class="QuestionGroup">
+               <label for="custom2_BaseTextColor" class="form-label">Bottom Text Color</label>
+               <p id="custom2_BaseTextColor_txtvalue"></p>
+               <input type="color" class="form-control form-control-color" id="custom2_BaseTextColor" name="custom2_BaseTextColor" value="#FFFFFF" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_bottomText','custom2_bottomText_tech'],'color')">
+            </div>
+            <div class="QuestionGroup">
+               <p>Select what Templates you would like to generate</p>
+               <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="custom2_flexCheckTicket" name="custom_2_ticket_checkbox" checked>
+                  <label class="form-check-label" for="flexCheckTicket">
+                  Generate Ticket Notification Templates
+                  </label>
+               </div>
+            </div>
+            <button type="submit" class="btn btn-success">Generate Notification Templates</button>
+            <em style="font-size: 10px;">Downloads a zip file w/ txt documents containing new styling</em>
+            <script>
+               document.getElementById('custom2_template_editor_form').addEventListener('keydown', function(event) {
+                  if (event.key === 'Enter') {
+                     event.preventDefault();
+                  }});
+            </script>
+         </form>
+      </div>
+      <div class="template-preview">
+         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnRadioCustom2" id="Custom2RequestorTemp" autocomplete="off" checked onclick="showHideTemplates( 'custom2-template-preview-technician', 'custom2-template-preview-requestor')">
+            <label class="btn btn-outline-primary" for="Custom2RequestorTemp">Requestor Template Preview</label>
+            <input type="radio" class="btn-check" name="btnRadioCustom2" id="Custom2TicketingUserTemp" autocomplete="off" onclick="showHideTemplates( 'custom2-template-preview-requestor', 'custom2-template-preview-technician')">
+            <label class="btn btn-outline-primary" for="Custom2TicketingUserTemp">Technician Template Preview</label>
+         </div>
+         {{custom2_template_preview|safe}}
+      </div>
+      <!--            Custom 3 MNPS Template-->
+      <div id="CustomTemplate3Anchor" class="template-edit">
+         <br>
+         <h2>Custom Ticket Template #3</h2>
+         <br>
+         <p style="font-weight: bolder">Click on one of the color pickers, either paste the color code or use the <br>eye dropper tool to alter the color for the corresponding sections on the template.</p>
+         <form method="post" action="{{url_for('NotificationEditor.download_defaultTemplates',formid=4)}}" id="custom3_template_editor_form">
+            <div class="QuestionGroup">
+               <label for="custom3_backgroundColor" class="form-label">Main Background Color</label>
+               <p id="custom3_backgroundColor_txtvalue"></p>
+               <input type="color" class="form-control form-control-color" id="custom3_backgroundColor" name="custom3_backgroundColor" value="#f6f6f6" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom3-template-preview', 'custom3_backgroundColor', null , null,'background-color')">
+            </div>
+            <div class="QuestionGroup">
+               <label for="custom3_headerImageLink" class="form-label required">Header Image Link (Works Best with Client Portal Logo)</label>
+               <em style="font-size: 10px;"><br>Must be a valid image link </em>
+               <p id="custom3_headerImageLink_txtvalue"></p>
+               <input type="input" required class="form-control" id="custom3_headerImageLink" name="custom3_headerImageLink" placeholder="https://solutions.teamdynamix.com/TDPortal/BE/Logo/91/0" oninput="updateDefaultedPreview(this.value, 'custom3-template-preview', null, null , ['custom3_clientportalimage','custom3_clientportalimage-ticketingUser'],'src')">
+            </div>
+            <div class="QuestionGroup">
+               <label for="custom3_SincerelyText" class="form-label required">Sincerely Text</label>
+               <em style="font-size: 10px;"><br>Supports HTML <br> </em>
+               <p id="custom3_SincerelyText_txtvalue"></p>
+               <input type="input" required class="form-control" id="custom3_SincerelyText" name="custom3_SincerelyText" placeholder="<span style='font-weight: bold'> Digital Strategy &amp; Implementation</span><br> and <span style='font-weight: bold'>Technology Services</span>" oninput="updateDefaultedPreview(this.value, 'custom3-template-preview', null, null , ['custom3_sincerelyText_Requestor','custom3_sincerelyText_TicketingUser'],'innerHTML')">
+            </div>
+            <div class="QuestionGroup">
+               <label for="custom3_BaseText" class="form-label required">Bottom Text</label>
+               <em style="font-size: 10px;"><br>Supports HTML </em>
+               <p id="custom3_BaseText_txtvalue"></p>
+               <input type="input" required class="form-control" id="custom3_BaseText" name="custom3_BaseText" placeholder="<br>Technology Assistance Center<br>(p) 615.269.5956<br>Business hours: 8:00am–4:00pm CT" oninput="updateDefaultedPreview(this.value, 'custom3-template-preview', null, null , ['custom3_Bottom_Requestor','custom3_Bottom_TicketingUser'],'innerHTML')">
+            </div>
+            <div class="QuestionGroup">
+               <p>Select what Templates you would like to generate</p>
+               <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="custom3_flexCheckTicket" name="custom_3_ticket_checkbox" checked>
+                  <label class="form-check-label" for="flexCheckTicket">
+                  Generate Ticket Notification Templates
+                  </label>
+               </div>
+            </div>
+            <button type="submit" class="btn btn-success">Generate Notification Templates</button>
+            <em style="font-size: 10px;">Downloads a zip file w/ txt documents containing new styling</em>
+            <script>
+               document.getElementById('custom3_template_editor_form').addEventListener('keydown', function(event) {
+                  if (event.key === 'Enter') {
+                     event.preventDefault();
+                  }});
+            </script>
+         </form>
+      </div>
+      <div class="template-preview">
+         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnRadio" id="Custom3RequestorTemp" autocomplete="off" checked onclick="showHideTemplates( 'custom3-template-preview-TicketingUserView', 'custom3-template-preview-requestorView')">
+            <label class="btn btn-outline-primary" for="Custom3RequestorTemp">Requestor Template Preview</label>
+            <input type="radio" class="btn-check" name="btnRadio" id="Custom3TicketingUserTemp" autocomplete="off" onclick="showHideTemplates( 'custom3-template-preview-requestorView', 'custom3-template-preview-TicketingUserView')">
+            <label class="btn btn-outline-primary" for="Custom3TicketingUserTemp">Technician Template Preview</label>
+         </div>
+         {{custom3_template_preview|safe}}
+      </div>
+      <!--            Custom 4 Biola Template-->
+      <div id="CustomTemplate4Anchor" class="template-edit">
+         <br>
+         <h2>Custom Ticket Template #4</h2>
+         <br>
+         <p style="font-weight: bolder">Click on one of the color pickers, either paste the color code or use the <br>eye dropper tool to alter the color for the corresponding sections on the template.</p>
+         <br>
+         <p style="color:red;">This does not contain Ticket Moved (Ticketing User Template)</p>
+         <form method="post" action="{{url_for('NotificationEditor.download_defaultTemplates',formid=5)}}" id="custom3_template_editor_form">
+            <div class="QuestionGroup">
+               <label for="custom4_headerImageLink" class="form-label required">Header Image Link (Refers to top Cloud Logo)</label>
+               <em style="font-size: 10px;"><br>Must be a valid image link </em>
+               <p id="custom4_headerImageLink_txtvalue"></p>
+               <input type="input" required class="form-control" id="custom4_headerImageLink" name="custom4_headerImageLink" placeholder="https://solutions.teamdynamix.com/TDPortal/BE/Logo/91/0" oninput="updateDefaultedPreview(this.value, 'custom4-template-preview', null, null , ['custom-4-headerImage-requestor','custom-4-headerImage-ticketinguser'],'src')">
+            </div>
+            <div class="QuestionGroup">
+               <label for="custom4_secondaryImageLink" class="form-label required">Small Logo Image Link (Refers to small TDX Logo)</label>
+               <em style="font-size: 10px;"><br>Must be a valid image link </em>
+               <p id="custom4_secondaryImageLink_txtvalue"></p>
+               <input type="input" required class="form-control" id="custom4_secondaryImageLink" name="custom4_secondaryImageLink" placeholder="https://solutions.teamdynamix.com/TDPortal/BE/Logo/91/0" oninput="updateDefaultedPreview(this.value, 'custom4-template-preview', null, null , ['custom-4-secondLogoImage-requestor','custom-4-secondaryImage-ticketinguser'],'src')">
+            </div>
+            <div class="QuestionGroup">
+               <div class="row g-3">
+                  <div class="col">
                      <label for="custom4_supportText" class="form-label required">Refers to text "TDX Support"</label>
-                      <em style="font-size: 10px;"><br></em>
+                     <em style="font-size: 10px;"><br></em>
                      <p id="custom4_supportText_txtvalue"></p>
                      <input type="input" required class="form-control" id="custom4_supportText" name="custom4_supportText" placeholder="TDX Support" oninput="updateDefaultedPreview(this.value, 'custom4-template-preview', null, null , ['custom4-supportText-requestor','custom4-supportText-ticketinguser'],'innerText')">
                   </div>
-
-                  <div class="QuestionGroup">
+                  <div class="col">
                      <label for="custom4_servicesText" class="form-label required">Refers to text "Services"</label>
-                      <em style="font-size: 10px;"><br></em>
+                     <em style="font-size: 10px;"><br></em>
                      <p id="custom4_servicesText_txtvalue"></p>
                      <input type="input" required class="form-control" id="custom4_servicesText" name="custom4_servicesText" placeholder="Services" oninput="updateDefaultedPreview(this.value, 'custom4-template-preview', null, null , ['custom4-serviceText-requestor','custom4-serviceText-ticketinguser'],'innerText')">
                   </div>
-                   <div class="QuestionGroup">
-                     <div class="row g-3">
-                        <div class="col">
-                           <label for="custom4_headerSectionColors" class="form-label">Main Table Color</label>
-                           <p id="custom4_headerSectionColors_txtvalue"></p>
-                           <input type="color" class="form-control form-control-color" id="custom4_headerSectionColors" name="custom4_headerSectionColors" value="#222222" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom4-template-preview', null, 'h2' , null,'background-color')">
-                        </div>
-                        <div class="col">
-                           <label for="custom4_buttonColor" class="form-label">"View this ticket" Button Color</label>
-                           <p id="custom4_buttonColor_txtvalue"></p>
-                           <input type="color" class="form-control form-control-color" id="custom4_buttonColor" name="custom4_buttonColor" value="#21145f" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom4-template-preview', 'custom4-button-background', null , null,'background-color')">
-                        </div>
-
-                     </div>
-                  </div>
-                  <div class="QuestionGroup">
-                     <label for="custom4_baseImageLink" class="form-label required">Bottom Image Link (Refers to logo at bottom of template)</label>
-                      <em style="font-size: 10px;"><br>Must be a valid image link </em>
-                     <p id="custom4_baseImageLink_txtvalue"></p>
-                     <input type="input" required class="form-control" id="custom4_baseImageLink" name="custom4_baseImageLink" placeholder="https://solutions.teamdynamix.com/TDPortal/BE/Logo/91/0" oninput="updateDefaultedPreview(this.value, 'custom4-template-preview', null, null , ['custom4-footerimage-requestor','custom4-footerimage-ticketUser'],'src')">
-                  </div>
-
-                  <div class="QuestionGroup">
-                     <p>Select what Templates you would like to generate</p>
-                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="custom4_flexCheckTicket" name="custom_4_ticket_checkbox" checked>
-                        <label class="form-check-label" for="flexCheckTicket">
-                        Generate Ticket Notification Templates
-                        </label>
-                     </div>
-                  </div>
-                  <button type="submit" class="btn btn-success">Generate Notification Templates</button>
-                  <em style="font-size: 10px;">Downloads a zip file w/ txt documents containing new styling</em>
-                  <script>
-                     document.getElementById('custom3_template_editor_form').addEventListener('keydown', function(event) {
-                        if (event.key === 'Enter') {
-                           event.preventDefault();
-                        }});
-                  </script>
-               </form>
+               </div>
             </div>
-            <div class="template-preview">
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="btnRadioCustom4" id="Custom4RequestorTemp" autocomplete="off" checked onclick="showHideTemplates( 'custom4-template-preview-TicketingUserView', 'custom4-template-preview-requestorView')">
-                    <label class="btn btn-outline-primary" for="Custom4RequestorTemp">Requestor Template Preview</label>
-
-                    <input type="radio" class="btn-check" name="btnRadioCustom4" id="Custom4TicketingUserTemp" autocomplete="off" onclick="showHideTemplates( 'custom4-template-preview-requestorView', 'custom4-template-preview-TicketingUserView')">
-                    <label class="btn btn-outline-primary" for="Custom4TicketingUserTemp">Technician Template Preview</label>
-                </div>
-                {{custom4_template_preview|safe}}
+            <div class="QuestionGroup">
+               <div class="row g-3">
+                  <div class="col">
+                     <label for="custom4_headerSectionColors" class="form-label">Main Table Color</label>
+                     <p id="custom4_headerSectionColors_txtvalue"></p>
+                     <input type="color" class="form-control form-control-color" id="custom4_headerSectionColors" name="custom4_headerSectionColors" value="#222222" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom4-template-preview', null, 'h2' , null,'background-color')">
+                  </div>
+                  <div class="col">
+                     <label for="custom4_buttonColor" class="form-label">"View this ticket" Button Color</label>
+                     <p id="custom4_buttonColor_txtvalue"></p>
+                     <input type="color" class="form-control form-control-color" id="custom4_buttonColor" name="custom4_buttonColor" value="#21145f" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom4-template-preview', 'custom4-button-background', null , null,'background-color')">
+                  </div>
+               </div>
             </div>
-         </div>
+            <div class="QuestionGroup">
+               <label for="custom4_baseImageLink" class="form-label required">Bottom Image Link (Refers to logo at bottom of template)</label>
+               <em style="font-size: 10px;"><br>Must be a valid image link </em>
+               <p id="custom4_baseImageLink_txtvalue"></p>
+               <input type="input" required class="form-control" id="custom4_baseImageLink" name="custom4_baseImageLink" placeholder="https://solutions.teamdynamix.com/TDPortal/BE/Logo/91/0" oninput="updateDefaultedPreview(this.value, 'custom4-template-preview', null, null , ['custom4-footerimage-requestor','custom4-footerimage-ticketUser'],'src')">
+            </div>
+            <div class="QuestionGroup">
+               <p>Select what Templates you would like to generate</p>
+               <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="custom4_flexCheckTicket" name="custom_4_ticket_checkbox" checked>
+                  <label class="form-check-label" for="flexCheckTicket">
+                  Generate Ticket Notification Templates
+                  </label>
+               </div>
+            </div>
+            <button type="submit" class="btn btn-success">Generate Notification Templates</button>
+            <em style="font-size: 10px;">Downloads a zip file w/ txt documents containing new styling</em>
+            <script>
+               document.getElementById('custom3_template_editor_form').addEventListener('keydown', function(event) {
+                  if (event.key === 'Enter') {
+                     event.preventDefault();
+                  }});
+            </script>
+         </form>
       </div>
+      <div class="template-preview">
+         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnRadioCustom4" id="Custom4RequestorTemp" autocomplete="off" checked onclick="showHideTemplates( 'custom4-template-preview-TicketingUserView', 'custom4-template-preview-requestorView')">
+            <label class="btn btn-outline-primary" for="Custom4RequestorTemp">Requestor Template Preview</label>
+            <input type="radio" class="btn-check" name="btnRadioCustom4" id="Custom4TicketingUserTemp" autocomplete="off" onclick="showHideTemplates( 'custom4-template-preview-requestorView', 'custom4-template-preview-TicketingUserView')">
+            <label class="btn btn-outline-primary" for="Custom4TicketingUserTemp">Technician Template Preview</label>
+         </div>
+         {{custom4_template_preview|safe}}
+      </div>
+   </div>
+</div>
+<script>
+   function showHideTemplates(templateIDToHide, templateIDToShow) {
+       var elementToHide = document.getElementById(templateIDToHide);
+       var elementToDisplay = document.getElementById(templateIDToShow);
 
-    <script>
-                    function showHideTemplates(templateIDToHide, templateIDToShow) {
-                        var elementToHide = document.getElementById(templateIDToHide);
-                        var elementToDisplay = document.getElementById(templateIDToShow);
+       var isToHideHidden = elementToHide.classList.contains('hidden');
+       var isToDisplayHidden = elementToDisplay.classList.contains('hidden');
 
-                        var isToHideHidden = elementToHide.classList.contains('hidden');
-                        var isToDisplayHidden = elementToDisplay.classList.contains('hidden');
-
-                        if (isToHideHidden && isToDisplayHidden) {
-                            elementToHide.classList.remove('hidden');
-                            elementToDisplay.classList.add('hidden');
-                        } else if (!isToHideHidden && isToDisplayHidden) {
-                            elementToHide.classList.add('hidden');
-                            elementToDisplay.classList.remove('hidden');
-                        }
-                    }
+       if (isToHideHidden && isToDisplayHidden) {
+           elementToHide.classList.remove('hidden');
+           elementToDisplay.classList.add('hidden');
+       } else if (!isToHideHidden && isToDisplayHidden) {
+           elementToHide.classList.add('hidden');
+           elementToDisplay.classList.remove('hidden');
+       }
+   }
 
 
-    </script>
-
-
-
-
+</script>
 {% endblock %}

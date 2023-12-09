@@ -3,14 +3,14 @@
     <tr><td id="header-banner" style="padding: 0;">
         <img 
             style="height: 120px; object-fit: cover; width: 100%;"
-            src="https://jasonbiola.github.io/TDX/images/photos/library-hero-700px.jpg"
+            src="[custom4_headerImageLink]"
         />
     </td></tr>
     
     <tr><td id="header-logo" style="padding: 1%;">
         <table style="margin: auto; width: 315px;"><tr>
             <td id="header-icon">
-                <img src="https://jasonbiola.github.io/TDX/images/icons/biola-bell-tower-left-79x100.png" style="height: 80px" />
+                <img src="[custom4_secondaryImageLink]" style="height: 80px" />
             </td>
             <td id="header-text" style="text-align: center;">
                 <div style="margin-left: -10px; font-size: 20px; line-height: 2; letter-spacing: 1px;">Information Technology</div>
@@ -22,7 +22,7 @@
 
 <!-- ⇓ EMAIL BODY ⇓ -->
     <tr><td id="ticket-info" style="padding: 2%;">
-        <h2 style="text-align: center; background-color: #1d283a; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
+        <h2 style="text-align: center; background-color:[custom4_headerSectionColors]; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
             Ticket #{{ID}}
         </h2>
         <div style="border: 1px solid #1d283a; border-radius: 0 0 12px 12px; padding: 12px;">
@@ -31,7 +31,7 @@
     </td></tr>
 
     <tr><td id="request-details" style="padding: 2%;">
-        <h2 style="text-align: center; background-color: #1d283a; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
+        <h2 style="text-align: center; background-color:[custom4_headerSectionColors]; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
             New Comment / Update
         </h2>
         <div style="border: 1px solid #1d283a; border-radius: 0 0 12px 12px; padding: 12px;">
@@ -45,7 +45,7 @@
     </td></tr>
 
     <tr><td id="ticket-details" style="padding: 2%;">
-        <h2 style="text-align: center; background-color: #1d283a; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
+        <h2 style="text-align: center; background-color:[custom4_headerSectionColors]; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
             Ticket Details
         </h2>
         <div style="border: 1px solid #1d283a; border-radius: 0 0 12px 12px; padding: 12px;">
@@ -105,7 +105,7 @@
     
 <!-- ⇓ EMAIL FOOTER ⇓ -->     
        <tr><td id="logo" style="text-align: center; margin: auto; max-width: 600px; min-width: 330px; padding: 2%;">
-        <img src="https://jasonbiola.github.io/TDX/images/icons/biola-logo-black-text-290x80.png" style="height: 80px; object-fit: contain; width: 80%;"/>
+        <img src="[custom4_baseImageLink]" style="height: 80px; object-fit: contain; width: 80%;"/>
     </td></tr> <!-- #logo -->
     
     </td></tr>

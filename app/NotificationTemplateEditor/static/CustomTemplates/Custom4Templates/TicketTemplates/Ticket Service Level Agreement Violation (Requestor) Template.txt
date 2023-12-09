@@ -3,14 +3,14 @@
     <tr><td id="header-banner" style="padding: 0;">
         <img 
             style="height: 120px; object-fit: cover; width: 100%;"
-            src="https://jasonbiola.github.io/TDX/images/photos/library-hero-700px.jpg"
+            src="[custom4_headerImageLink]"
         />
     </td></tr>
     
     <tr><td id="header-logo" style="padding: 1%;">
         <table style="margin: auto; width: 315px;"><tr>
             <td id="header-icon">
-                <img src="https://jasonbiola.github.io/TDX/images/icons/biola-bell-tower-left-79x100.png" style="height: 80px" />
+                <img src="[custom4_secondaryImageLink]" style="height: 80px" />
             </td>
             <td id="header-text" style="text-align: center;">
                 <div style="margin-left: -10px; font-size: 20px; line-height: 2; letter-spacing: 1px;">Information Technology</div>
@@ -22,7 +22,7 @@
 
 <!-- ⇓ EMAIL BODY ⇓ -->
     <tr><td id="ticket-info" style="padding: 2%;">
-        <h2 style="text-align: center; background-color: #1d283a; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
+        <h2 style="text-align: center; background-color:[custom4_headerSectionColors]; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
             Ticket #{{ID}}
         </h2>
         <div style="border: 1px solid #1d283a; border-radius: 0 0 12px 12px; padding: 12px;">
@@ -31,7 +31,7 @@
     </td></tr>
 
     <tr><td id="request-details" style="padding: 2%;">
-        <h2 style="text-align: center; background-color: #1d283a; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
+        <h2 style="text-align: center; background-color:[custom4_headerSectionColors]; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
             Service Level Agreement Violation
         </h2>
         <div style="border: 1px solid #1d283a; border-radius: 0 0 12px 12px; padding: 12px;">
@@ -42,7 +42,7 @@
     </td></tr>
 
     <tr><td id="ticket-details" style="padding: 2%;">
-        <h2 style="text-align: center; background-color: #1d283a; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
+        <h2 style="text-align: center; background-color:[custom4_headerSectionColors]; border-radius: 12px 12px 0 0; color: white; font-weight: 400; margin: 0; padding: 12px;">
             Ticket Details
         </h2>
         <div style="border: 1px solid #1d283a; border-radius: 0 0 12px 12px; padding: 12px;">
@@ -76,35 +76,15 @@
     </td></tr> <!-- #ticket-details -->
 
     <tr><td style="height: 75px; padding: 2%; text-align: center;">
-        <a id="link-to-ticket" style="background-color: #2268ab; border-radius: 12px; color: white; display: inline-block; font-size: 25px; padding: 12px 24px; text-decoration: none;" href="{{ClientUrl}}">View this ticket</a>
+        <a id="link-to-ticket" style="background-color: [custom4_buttonColor]; border-radius: 12px; color: white; display: inline-block; font-size: 25px; padding: 12px 24px; text-decoration: none;" href="{{ClientUrl}}">View this ticket</a>
     </td></tr>
 <!-- ⇑ EMAIL BODY ⇑ -->
     
 <!-- ⇓ EMAIL FOOTER ⇓ -->     
-    <tr><td id="quicklinks" style="padding: 2%;">
-        <table style="width: 100%"><tr><td style="padding: 1%; text-align: center; vertical-align: top; width: 33%;">
-            <a id="quicklink-tickets" style="text-decoration: none;" href="https://services.biola.edu/TDClient/75/Portal/Requests/TicketRequests/">
-                <img src="https://jasonbiola.github.io/TDX/images/icons/tickets-100x100.png" style="width: 100px;"/>
-                <h3 style="margin-bottom: 0;">View My Tickets</h3>
-            </a>
-        </td>
-        <td style="padding: 1%; text-align: center; vertical-align: top; width: 33%;">
-            <a id="quicklink-service-catalog" style="text-decoration: none;"
-            href="https://services.biola.edu/TDClient/75/Portal/Requests/ServiceCatalog">
-                <img src="https://jasonbiola.github.io/TDX/images/icons/service-catalog-100x100.png" style="width: 100px;"/>
-                <h3 style="margin-bottom: 0;">Service Catalog</h3>
-            </a>
-        </td>
-        <td style="padding: 1%; text-align: center; vertical-align: top; width: 33%;">
-            <a id="quicklink-kb" style="text-decoration: none;" href="https://services.biola.edu/TDClient/75/Portal/KB/">
-                <img src="https://jasonbiola.github.io/TDX/images/icons/knowledge-base-100x100.png" style="width: 100px;"/>
-                <h3 style="margin-bottom: 0;">Knowledge Base</h3>
-            </a>
-        </td></tr></table>  
-    </td></tr> <!-- quicklinks -->
+
     <tr><td style="padding: 2%;"><hr style="border-top: 1px solid #2268ab; margin: 0 auto; width: 80%;"></td></tr>
     <tr><td id="logo" style="text-align: center; margin: auto; max-width: 600px; min-width: 330px; padding: 2%;">
-        <img src="https://jasonbiola.github.io/TDX/images/icons/biola-logo-black-text-290x80.png" style="height: 80px; object-fit: contain; width: 80%;"/>
+        <img src="[custom4_baseImageLink]" style="height: 80px; object-fit: contain; width: 80%;"/>
     </td></tr> <!-- #logo -->
     
     </td></tr>
