@@ -7,15 +7,26 @@ import pathlib
 import shutil
 import zipfile
 import time
+import bleach
 
 NotificationEditor = Blueprint("NotificationEditor",__name__, template_folder="templates", static_url_path="TDXContentEditor/app/NotificationTemplateEditor/static", static_folder=os.path.join(os.getcwd() +r"\app\NotificationTemplateEditor\static"))
 
 
 @NotificationEditor.route('/', methods=["GET"])
 def getHome():
-    return render_template("defaultTemplateEditor.html",
+    return render_template("defaultTemplateEditor.html" ,show_button=True)
 
-                           )
+@NotificationEditor.route('/process', methods=["GET"])
+def loadSavedValues():
+    return render_template("defaultTemplateEditor.html",show_button=True)
+@NotificationEditor.route('/update_preview', methods=["POST"])
+def SanitizeHTML():
+    data = request.json
+    element = data["FieldValue"]
+    allowed_tags = ['b', 'i', 'u', 'em', 'strong', 'a', 'br','span']
+    clean_html = bleach.clean(element, tags=allowed_tags, strip=True)
+
+    return jsonify({"sanitizedValue":clean_html})
 @NotificationEditor.route("/ChangeLog", methods=["GET"])
 def getChangeLog():
     return render_template('changelog.html')
