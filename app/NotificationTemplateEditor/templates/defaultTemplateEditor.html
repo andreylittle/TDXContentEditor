@@ -4,6 +4,13 @@
 <script src= "{{ url_for('NotificationEditor.static',filename='home.js') }}"></script>
 {% endblock %}
 {% block body %}
+    <!-- Custom Alert Box -->
+<div id="customAlert" style="display:none;">
+    <div class="alert-content">
+        <span class="close-btn" onclick="closeAlert()">&times;</span>
+        <p id="alertMessage">This is an alert message.</p>
+    </div>
+</div>
     <a href="javascript:void(0)" class="closebtn" style="display: None" id="SideNavOpen" onclick="openNav()"><span class="fa fa-arrow-circle-right"></span></a>
 <div class="sidenav" id="NotificationTemplateSideNav">
 
@@ -25,21 +32,21 @@
          <h2>Default TeamDynamix Template</h2>
          <br>
          <p style="font-weight: bolder">Click on one of the color pickers, either paste the color code or use the eye dropper tool to alter the color for the corresponding sections on the template. Colors will be updated on the right preview.</p>
-         <form method="post" action="{{url_for('NotificationEditor.download_defaultTemplates',formid=1)}}">
+         <form method="post" action="{{url_for('NotificationEditor.download_defaultTemplates',formid=1)}}" id="defaultForm">
             <div class="QuestionGroup">
                <label for="Header1" class="form-label">Header 1 Color (Refers to "Comment" and "Incident Details")</label>
                <p id="Header1_txtvalue"></p>
-               <input type="color" class="form-control form-control-color" id="Header1" name="Header1Color" value="#FFFFFF" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'default-template-preview', 'default_h1', null, null, 'color')">
+               <input type="color" class="form-control form-control-color" id="Header1" name="Header1Color" value="#FFFFFF" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'default-template-preview', 'default_h1', null, null, 'color',false)">
             </div>
             <div class="QuestionGroup">
                <label for="Header2" class="form-label">Text Color:</label>
                <p id="Header2_txtvalue"></p>
-               <input type="color" class="form-control form-control-color" id="Header2" name="Header2Color" value="#515A61" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'default-template-preview', 'default_text',null, null,'color')">
+               <input type="color" class="form-control form-control-color" id="Header2" name="Header2Color" value="#515A61" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'default-template-preview', 'default_text',null, null,'color',false)">
             </div>
             <div class="QuestionGroup">
                <label for="TableColor" class="form-label">Table/Border Color:</label>
                <p id="TableColor_txtvalue"></p>
-               <input type="color" class="form-control form-control-color" name="TableColor" id="TableColor" value="#0072c6" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'default-template-preview', 'default_table',null,null,'background-color'), updateDefaultedPreview(this.value, 'default-template-preview', 'default_table_boarder',null,null,'borderColor')">
+               <input type="color" class="form-control form-control-color" name="TableColor" id="TableColor" value="#0072c6" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'default-template-preview', 'default_table',null,null,'background-color',false), updateDefaultedPreview(this.value, 'default-template-preview', 'default_table_boarder',null,null,'borderColor',false)">
             </div>
             <div class="QuestionGroup">
                <p>Select what Templates you would like to generate</p>
@@ -86,17 +93,17 @@
             <div class="QuestionGroup">
                <label for="consolidated_Header1" class="form-label">Header 1 Color (Refers to "Comment" and "Incident Details")</label>
                <p id="consolidated_Header1_txtvalue"></p>
-               <input type="color" class="form-control form-control-color" id="consolidated_Header1" name="consolidated_Header1Color" value="#FFFFFF" title="Choose your color" oninput="updateFieldColor(this),updateDefaultedPreview(this.value, 'custom1-template-preview', 'custom1_h1', null, null,'color')">
+               <input type="color" class="form-control form-control-color" id="consolidated_Header1" name="consolidated_Header1Color" value="#FFFFFF" title="Choose your color" oninput="updateFieldColor(this),updateDefaultedPreview(this.value, 'custom1-template-preview', 'custom1_h1', null, null,'color',false)">
             </div>
             <div class="QuestionGroup">
                <label for="consolidated_Header2" class="form-label">Text Color (Refers to ALL text excuding H1 text)</label>
                <p id="consolidated_Header2_txtvalue"></p>
-               <input type="color" class="form-control form-control-color" id="consolidated_Header2" name="consolidated_Header2Color" value="#515A61" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom1-template-preview', 'custom1_text', null , null,'color')">
+               <input type="color" class="form-control form-control-color" id="consolidated_Header2" name="consolidated_Header2Color" value="#515A61" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom1-template-preview', 'custom1_text', null , null,'color',false)">
             </div>
             <div class="QuestionGroup">
                <label for="consolidated_TableColor" class="form-label">Table/Border Color:</label>
                <p id="consolidated_TableColor_txtvalue"></p>
-               <input type="color" class="form-control form-control-color" name="consolidated_TableColor" id="consolidated_TableColor" value="#0072c6" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom1-template-preview', 'custom1_table', null , null,'background-color')">
+               <input type="color" class="form-control form-control-color" name="consolidated_TableColor" id="consolidated_TableColor" value="#0072c6" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom1-template-preview', 'custom1_table', null , null,'background-color',false)">
             </div>
             <div class="QuestionGroup">
                <p>Select what Templates you would like to generate</p>
@@ -133,12 +140,12 @@
                   <div class="col">
                      <label for="custom2_tableColor" class="form-label">Main Table Color</label>
                      <p id="custom2_tableColor_txtvalue"></p>
-                     <input type="color" class="form-control form-control-color" id="custom2_tableColor" name="custom2_tableColor" value="#21145f" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom2-template-preview', 'custom2_tableColor', null , null,'background-color'), updateDefaultedPreview(this.value, 'custom2-template-preview', 'custom2_boarderColor', null , null,'border-color')">
+                     <input type="color" class="form-control form-control-color" id="custom2_tableColor" name="custom2_tableColor" value="#21145f" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom2-template-preview', 'custom2_tableColor', null , null,'background-color'), updateDefaultedPreview(this.value, 'custom2-template-preview', 'custom2_boarderColor', null , null,'border-color',false)">
                   </div>
                   <div class="col">
                      <label for="custom2_ticketLinkColor" class="form-label">Ticket Link Color</label>
                      <p id="custom2_ticketLinkColor_txtvalue"></p>
-                     <input type="color" class="form-control form-control-color" id="custom2_ticketLinkColor" name="custom2_ticketLinkColor" value="#21145f" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom2-template-preview', 'custom2_ticketLinkColor', null , null,'color')">
+                     <input type="color" class="form-control form-control-color" id="custom2_ticketLinkColor" name="custom2_ticketLinkColor" value="#21145f" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom2-template-preview', 'custom2_ticketLinkColor', null , null,'color',false)">
                   </div>
                </div>
             </div>
@@ -153,19 +160,19 @@
                   <div class="col">
                      <label for="custom2_headerImageWidth" class="form-label required">Header Image Width</label>
                      <p id="custom2_headerImageWidth_txtvalue"></p>
-                     <input type="number" required class="form-control" id="custom2_headerImageWidth" name="custom2_headerImageWidth" placeholder="200" value="200" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_clientportalimage','custom2_clientportalimage_tech'],'width')">
+                     <input type="number" required class="form-control" id="custom2_headerImageWidth" name="custom2_headerImageWidth" placeholder="200" value="200" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_clientportalimage','custom2_clientportalimage_tech'],'width',false)">
                   </div>
                   <div class="col">
                      <label for="custom2_headerImageHeight" class="form-label required">Header Image Height</label>
                      <p id="custom2_headerImageHeight_txtvalue"></p>
-                     <input type="number" required class="form-control" id="custom2_headerImageHeight" name="custom2_headerImageHeight" placeholder="80" value="80" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_clientportalimage','custom2_clientportalimage_tech'],'height')">
+                     <input type="number" required class="form-control" id="custom2_headerImageHeight" name="custom2_headerImageHeight" placeholder="80" value="80" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_clientportalimage','custom2_clientportalimage_tech'],'height',false)">
                   </div>
                </div>
             </div>
             <div class="QuestionGroup">
                <label for="custom2_ClientPortalURL" class="form-label required">Client Portal URL</label>
                <p id="custom2_ClientPortalURL_txtvalue"></p>
-               <input type="input" required class="form-control" id="custom2_ClientPortalURL" name="custom2_ClientPortalURL" placeholder="https://solutions.teamdynamix.com" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_clientportalURL','custom2_clientportalURL_tech'],'href')">
+               <input type="input" required class="form-control" id="custom2_ClientPortalURL" name="custom2_ClientPortalURL" placeholder="https://solutions.teamdynamix.com" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_clientportalURL','custom2_clientportalURL_tech'],'href',false)">
             </div>
             <div class="QuestionGroup">
                <label for="custom2_UpdateText" class="form-label required">Update Text</label>
@@ -182,7 +189,7 @@
             <div class="QuestionGroup">
                <label for="custom2_BaseTextColor" class="form-label">Bottom Text Color</label>
                <p id="custom2_BaseTextColor_txtvalue"></p>
-               <input type="color" class="form-control form-control-color" id="custom2_BaseTextColor" name="custom2_BaseTextColor" value="#FFFFFF" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_bottomText','custom2_bottomText_tech'],'color')">
+               <input type="color" class="form-control form-control-color" id="custom2_BaseTextColor" name="custom2_BaseTextColor" value="#FFFFFF" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_bottomText','custom2_bottomText_tech'],'color',false)">
             </div>
             <div class="QuestionGroup">
                <p>Select what Templates you would like to generate</p>
@@ -222,7 +229,7 @@
             <div class="QuestionGroup">
                <label for="custom3_backgroundColor" class="form-label">Main Background Color</label>
                <p id="custom3_backgroundColor_txtvalue"></p>
-               <input type="color" class="form-control form-control-color" id="custom3_backgroundColor" name="custom3_backgroundColor" value="#f6f6f6" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom3-template-preview', 'custom3_backgroundColor', null , null,'background-color')">
+               <input type="color" class="form-control form-control-color" id="custom3_backgroundColor" name="custom3_backgroundColor" value="#f6f6f6" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom3-template-preview', 'custom3_backgroundColor', null , null,'background-color',false)">
             </div>
             <div class="QuestionGroup">
                <label for="custom3_headerImageLink" class="form-label required">Header Image Link (Works Best with Client Portal Logo)</label>
@@ -312,12 +319,12 @@
                   <div class="col">
                      <label for="custom4_headerSectionColors" class="form-label">Main Table Color</label>
                      <p id="custom4_headerSectionColors_txtvalue"></p>
-                     <input type="color" class="form-control form-control-color" id="custom4_headerSectionColors" name="custom4_headerSectionColors" value="#222222" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom4-template-preview', null, 'h2' , null,'background-color')">
+                     <input type="color" class="form-control form-control-color" id="custom4_headerSectionColors" name="custom4_headerSectionColors" value="#222222" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom4-template-preview', null, 'h2' , null,'background-color',false)">
                   </div>
                   <div class="col">
                      <label for="custom4_buttonColor" class="form-label">"View this ticket" Button Color</label>
                      <p id="custom4_buttonColor_txtvalue"></p>
-                     <input type="color" class="form-control form-control-color" id="custom4_buttonColor" name="custom4_buttonColor" value="#21145f" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom4-template-preview', 'custom4-button-background', null , null,'background-color')">
+                     <input type="color" class="form-control form-control-color" id="custom4_buttonColor" name="custom4_buttonColor" value="#21145f" title="Choose your color" oninput="updateFieldColor(this), updateDefaultedPreview(this.value, 'custom4-template-preview', 'custom4-button-background', null , null,'background-color',false)">
                   </div>
                </div>
             </div>
@@ -356,8 +363,9 @@
          {% include "PreviewHTMLTemplates/custom4.html" %}
       </div>
    </div>
+
 </div>
-<script>
+    <script>
    function showHideTemplates(templateIDToHide, templateIDToShow) {
        var elementToHide = document.getElementById(templateIDToHide);
        var elementToDisplay = document.getElementById(templateIDToShow);
@@ -396,5 +404,8 @@
 
 
 </script>
+
+
+
 
 {% endblock %}
