@@ -4,8 +4,12 @@
 <script src= "{{ url_for('NotificationEditor.static',filename='home.js') }}"></script>
 {% endblock %}
 {% block body %}
+    <a href="javascript:void(0)" class="closebtn" style="display: None" id="SideNavOpen" onclick="openNav()"><span class="fa fa-arrow-circle-right"></span></a>
 <div class="sidenav" id="NotificationTemplateSideNav">
+
    <img src="/static/TDX Graphics/TDX Icon fullcolor_rounded square.png" alt="tdx logo"><span class="titleText">Notification Editor v2</span>
+   <a href="javascript:void(0)" class="closebtn" id="SideNavClose" onclick="closeNav()"><span class="fa fa-arrow-circle-left"></span> Collapse</a>
+
    <a href="#defaultTempalteAnchor">Default Template</a>
    <a href="#CustomTemplate1Anchor">Custom Template #1</a>
    <a href="#CustomTemplate2Anchor">Custom Template #2</a>
@@ -13,7 +17,7 @@
    <a href="#CustomTemplate4Anchor">Custom Template #4</a>
    <a id="changeLog" href="./ChangeLog">Change Log</a>
 </div>
-<div class="template-main-content-body">
+<div class="template-main-content-body" id="content-body">
    <div class="template-information-list">
       <!--             Defaulted Template-->
       <div id="defaultTempalteAnchor" class="template-edit">
@@ -69,7 +73,8 @@
             <input type="radio" class="btn-check" name="btnRadioDefault" id="DefaultTicketingUserTemp" autocomplete="off" onclick="showHideTemplates( 'default-template-preview-requestor', 'default-template-preview-technician')">
             <label class="btn btn-outline-primary" for="DefaultTicketingUserTemp">Technician Template Preview</label>
          </div>
-         {{default_template_preview|safe}}
+{#         {{default_template_preview|safe}}#}
+          {% include "PreviewHTMLTemplates/default-template-preview.html" %}
       </div>
       <!--Consolidated custom 1-->
       <div id="CustomTemplate1Anchor" class="template-edit" >
@@ -113,7 +118,8 @@
             <input type="radio" class="btn-check" name="btnRadioCustom1" id="Custom1TicketingUserTemp" autocomplete="off" onclick="showHideTemplates( 'custom1-template-preview-requestor', 'custom1-template-preview-technician')">
             <label class="btn btn-outline-primary" for="Custom1TicketingUserTemp">Technician Template Preview</label>
          </div>
-         {{custom1_template_preview|safe}}
+         {% include "PreviewHTMLTemplates/custom1.html" %}
+
       </div>
       <!--OU Template Custom 2-->
       <div id="CustomTemplate2Anchor" class="template-edit">
@@ -204,7 +210,7 @@
             <input type="radio" class="btn-check" name="btnRadioCustom2" id="Custom2TicketingUserTemp" autocomplete="off" onclick="showHideTemplates( 'custom2-template-preview-requestor', 'custom2-template-preview-technician')">
             <label class="btn btn-outline-primary" for="Custom2TicketingUserTemp">Technician Template Preview</label>
          </div>
-         {{custom2_template_preview|safe}}
+         {% include "PreviewHTMLTemplates/custom2.html" %}
       </div>
       <!--            Custom 3 MNPS Template-->
       <div id="CustomTemplate3Anchor" class="template-edit">
@@ -262,7 +268,7 @@
             <input type="radio" class="btn-check" name="btnRadio" id="Custom3TicketingUserTemp" autocomplete="off" onclick="showHideTemplates( 'custom3-template-preview-requestorView', 'custom3-template-preview-TicketingUserView')">
             <label class="btn btn-outline-primary" for="Custom3TicketingUserTemp">Technician Template Preview</label>
          </div>
-         {{custom3_template_preview|safe}}
+         {% include "PreviewHTMLTemplates/custom3.html" %}
       </div>
       <!--            Custom 4 Biola Template-->
       <div id="CustomTemplate4Anchor" class="template-edit">
@@ -347,7 +353,7 @@
             <input type="radio" class="btn-check" name="btnRadioCustom4" id="Custom4TicketingUserTemp" autocomplete="off" onclick="showHideTemplates( 'custom4-template-preview-requestorView', 'custom4-template-preview-TicketingUserView')">
             <label class="btn btn-outline-primary" for="Custom4TicketingUserTemp">Technician Template Preview</label>
          </div>
-         {{custom4_template_preview|safe}}
+         {% include "PreviewHTMLTemplates/custom4.html" %}
       </div>
    </div>
 </div>
@@ -368,6 +374,27 @@
        }
    }
 
+   function closeNav() {
+
+    var sideNav = document.getElementById("NotificationTemplateSideNav");
+    sideNav.style.display="none";
+
+    var openBtn = document.getElementById("SideNavOpen");
+    document.getElementById("content-body").style.marginLeft= "50px";
+    openBtn.style.display="block";
+
+
+
+
+    }
+    function openNav(){
+           var sideNav = document.getElementById("NotificationTemplateSideNav");
+    sideNav.style.display="block";
+    document.getElementById("content-body").style.marginLeft= "300px";
+    document.getElementById("SideNavOpen").style.display="none"
+    }
+
 
 </script>
+
 {% endblock %}

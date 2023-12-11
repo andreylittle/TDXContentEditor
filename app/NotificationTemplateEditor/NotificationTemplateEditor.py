@@ -13,21 +13,8 @@ NotificationEditor = Blueprint("NotificationEditor",__name__, template_folder="t
 
 @NotificationEditor.route('/', methods=["GET"])
 def getHome():
-
-    DefaultTemplate = open("app/NotificationTemplateEditor/static/PreviewHTMLTemplates/Default/default-template-preview.html", "r")
-    customTemplate1 = open("app/NotificationTemplateEditor/static/PreviewHTMLTemplates/Custom1/custom1-template-preview-ConsolidatedTemplate.html", "r")
-    customTemplate2 = open("app/NotificationTemplateEditor/static/PreviewHTMLTemplates/Custom2/custom2-template-preview-OUITTemplate.html", "r")
-    customTemplate3 = open("app/NotificationTemplateEditor/static/PreviewHTMLTemplates/Custom3/custom3-template-preview-MNPS.html", "r")
-    customTemplate4 = open("app/NotificationTemplateEditor/static/PreviewHTMLTemplates/Custom4/custom4-template-preview-Biola.html", "r")
-
-
-
     return render_template("defaultTemplateEditor.html",
-                           default_template_preview=DefaultTemplate.read(),
-                           custom1_template_preview=customTemplate1.read(),
-                           custom2_template_preview=customTemplate2.read(),
-                           custom3_template_preview=customTemplate3.read(),
-                           custom4_template_preview=customTemplate4.read()
+
                            )
 @NotificationEditor.route("/ChangeLog", methods=["GET"])
 def getChangeLog():
