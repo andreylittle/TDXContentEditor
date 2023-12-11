@@ -102,8 +102,28 @@ form .QuestionGroup{
     left: 0;
     bottom: 60px;
 }
+#roadMap{
+    position: absolute;
+    left: 0;
+    bottom: 100px;
+}
 
 .hidden {
   display: none;
 }
-
+body #SideNavOpen{
+    position: fixed;
+    background-color: #ebe9f5;
+    color: #8332a7;
+    width: 35px;
+    height: 35px;
+    padding: 2px 0px 0px 7px;
+    border-radius: 50%;
+    font-size: 20px;
+    top: 70px;
+    left: 15px;
+    display: flex; /* Add this line */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-decoration: none; /* Optional: Removes underline from the link */
+}

@@ -2,6 +2,7 @@ customers with good templates to add
 
 - biola
     tickets
+    Done
 
 snow college
     tickets
@@ -18,8 +19,8 @@ Future Features to Add
     back to top button
     save settings for later
         thinking of getting all form values from queries and checking query values and setting them into form values
-    collapse side nav function
-    depreciate html module editor
+    collapse side nav function - Done
+    depreciate html module editor - Done
     add more project styled templates
 
     figure out a way to templatetize the main page into a jinga template (will be useful once I hit more than 5 templates)
