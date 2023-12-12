@@ -297,7 +297,3 @@ def get_project_templates(workingDirectory, baseExportDirectory, MainExportDirec
 
 
     pass
-
-
-
-
