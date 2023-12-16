@@ -1,5 +1,7 @@
 function updateFieldColor(field) {
-    document.getElementById(field.id + "_txtvalue").innerHTML = field.value;
+    var encodedValue = $("<div>").text(field.value).html();
+
+    document.getElementById(field.id + "_txtvalue").innerHTML = encodedValue;
 }
 
 
@@ -76,6 +78,7 @@ function updateFieldAfterSanitization(fieldValue, template_id, class_to_update, 
         // Loops through all elements updating proper field
         for (let i = 0; i < list_of_tags_to_update.length; i++) {
             list_of_tags_to_update[i].style[attribute_to_update] = fieldValue;
+
         }
     }
     // when editing ID,
@@ -108,7 +111,9 @@ function updateFieldAfterSanitization(fieldValue, template_id, class_to_update, 
                     console.log("Invalid image URL");
                 }
             } else {
+
                 item_id_to_update[attribute_to_update] = fieldValue
+
             }
         }
         // This gets the ID of the incoming template
@@ -137,10 +142,53 @@ function collectFormData() {
 
     // Redirect to the constructed URL
 
-    document.getElementById("alertMessage").innerHTML= `<a href="${queryUrl}" target="_blank">Here is a shareable Link`
-        document.getElementById('customAlert').style.display = 'flex';
+
 
 }
+
+function getPageData(){
+    var formData = {};
+    var forms = document.forms;
+
+        for (var i = 0; i < forms.length; i++) {
+        var form = forms[i];
+        for (var j = 0; j < form.elements.length; j++) {
+            var element = form.elements[j];
+            if (element.name) {
+                formData[element.name] = element.value;
+            }
+        }
+    }
+    var jsonString = JSON.stringify(formData);
+    var encodedString = encodeURIComponent(jsonString);
+
+        fetch('http://127.0.0.1:5000/NotificationEditor/save_values', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', // Ensure this is set correctly
+                },
+                body: JSON.stringify({"data":encodedString})
+            })
+
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                var newTemplateId =data.template_id;
+                var queryUrl = "http://127.0.0.1:5000/NotificationEditor/process?template_id=" +data.template_id
+                //Set Modal Data
+                document.getElementById("staticBackdropLabel").innerText= `Click to View Link`
+document.getElementById("modal-body").innerHTML = `
+  <a style="font-size: 20px; font-weight: bold; color: #8332a7;" href="${queryUrl}" target="_blank">Click to open shareable Link</a>
+  <a style="color: #8332a7; font-size: 20px" role="button"  title="Copy URL" class="fa fa-clipboard" onclick="navigator.clipboard.writeText('${queryUrl}')"></a>
+`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+}
+
+
 function closeAlert() {
     document.getElementById('customAlert').style.display = 'none';
 }

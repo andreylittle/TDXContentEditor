@@ -5,11 +5,23 @@
 {% endblock %}
 {% block body %}
     <!-- Custom Alert Box -->
-<div id="customAlert" style="display:none;">
-    <div class="alert-content">
-        <span class="close-btn" onclick="closeAlert()">&times;</span>
-        <p id="alertMessage">This is an alert message.</p>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+      </div>
     </div>
+  </div>
 </div>
     <a href="javascript:void(0)" class="closebtn" style="display: None" id="SideNavOpen" onclick="openNav()"><span class="fa fa-arrow-circle-right"></span></a>
 <div class="sidenav" id="NotificationTemplateSideNav">
@@ -25,6 +37,16 @@
    <a id="changeLog" href="./ChangeLog">Change Log</a>
 </div>
 <div class="template-main-content-body" id="content-body">
+    <h1>Please Read</h1>
+    <br>
+    <p>Welcome to the Notification Template editor, before you get started with using this tool just a few things to note</p>
+    <ul>
+        <li>Preview Templates contain the Ticket Comment Added requestor and technician view </li>
+        <li>Please do not enter any sensitive information into any of the form fields i.e SSN, Credit Card #s, passwords etc</li>
+        <li>For any image urls they need to be publicly accessible, hosted with in your own TDX Environment/Servers </li>
+        <li>Limited HTML tags allowed, this includes bold, itallic, underline, strong, anchor, line break and span tags</li>
+
+    </ul>
    <div class="template-information-list">
       <!--             Defaulted Template-->
       <div id="defaultTempalteAnchor" class="template-edit">
@@ -402,7 +424,62 @@
     document.getElementById("SideNavOpen").style.display="none"
     }
 
+    function isNonEmptyString(str) {
+        return str !== null && str.trim() !== '';
+    }
+   {% if formData %}
+       var newFormData = {{ formData|tojson|safe }}
 
+       var setFormDataValues = JSON.parse(newFormData);
+        console.log(newFormData);
+       var forms = document.forms;
+
+for (var i = 0; i < forms.length; i++) {
+    var form = forms[i];
+    for (var j = 0; j < form.elements.length; j++) {
+        var element = form.elements[j];
+        if (setFormDataValues.hasOwnProperty(element.name)) {
+            element.value = setFormDataValues[element.name];
+            if (isNonEmptyString(element.value)) {
+                element.value = setFormDataValues[element.name];
+                // Dispatch the oninput event
+                var event = new Event('input', {
+                    bubbles: true,
+                    cancelable: true,
+                });
+                element.dispatchEvent(event);
+            }
+        }
+    }
+}
+
+
+   {% endif %}
+
+{% if alert_message %}
+   document.getElementById("staticBackdropLabel").innerText = 'ERROR';
+   document.getElementById("modal-body").innerHTML = `{{ alert_message }}`;
+
+   var ErrorModalElement = document.getElementById('staticBackdrop');
+   var ErrorModal = new bootstrap.Modal(ErrorModalElement); // Create a Bootstrap Modal instance
+   ErrorModal.show(); // Show the modal
+{% endif %}
+
+
+    const submitButtons = document.querySelectorAll('button[type="submit"]');
+
+// Add an event listener to each submit button
+submitButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        // Prevent the default form submission behavior
+   document.getElementById("staticBackdropLabel").innerText = 'Success';
+   document.getElementById("modal-body").innerHTML = `Downloading Files`;
+
+   var DownloadMessageElement = document.getElementById('staticBackdrop');
+   var DownloadMessage = new bootstrap.Modal(DownloadMessageElement); // Create a Bootstrap Modal instance
+   DownloadMessage.show(); // Show the modal
+    });
+});
 </script>
 
 
