@@ -20,9 +20,12 @@
       </ul>
         {% if show_button %}
         <div class="d-flex">
-                <button class="btn btn-success" onclick="collectFormData()">Create Shareable Link/Save Settings</button>
+        <button type="button" class="btn btn-success" onclick=" getPageData()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Create Shareable Link/Save Settings
+</button>
 
         </div>
+
         {% endif %}
     </div>
   </div>

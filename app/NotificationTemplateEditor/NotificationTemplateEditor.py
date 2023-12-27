@@ -1,6 +1,4 @@
-from collections import OrderedDict
 from flask import Blueprint, render_template, send_file, request, render_template_string, make_response,jsonify
-import json
 import os
 import io
 import pathlib
@@ -8,6 +6,9 @@ import shutil
 import zipfile
 import time
 import bleach
+import urllib.parse
+import uuid
+from app.NotificationTemplateEditor import dbhelpers
 
 NotificationEditor = Blueprint("NotificationEditor",__name__, template_folder="templates", static_url_path="TDXContentEditor/app/NotificationTemplateEditor/static", static_folder=os.path.join(os.getcwd() +r"\app\NotificationTemplateEditor\static"))
 
@@ -18,14 +19,49 @@ def getHome():
 
 @NotificationEditor.route('/process', methods=["GET"])
 def loadSavedValues():
+    requestParams = request.args.to_dict()
+    print(requestParams)
+    if not requestParams:
+        print("No Arguments Provided")
+        return render_template("defaultTemplateEditor.html", show_button=True, alert_message="No template Id was provided")
+    if 'template_id' not in requestParams:
+        print("No Valid Params Sent")
+        return render_template("defaultTemplateEditor.html", show_button=True, alert_message="No template Id was provided")
+    if 'template_id' in requestParams and requestParams['template_id'] =='':
+        print("template id was empty")
+        return render_template("defaultTemplateEditor.html", show_button=True, alert_message="No template Id was provided")
+    #Once we know we have a template id get it from the db
+    if 'template_id' in requestParams and requestParams['template_id'] !='':
+        data = dbhelpers.getDataFromDB(requestParams['template_id'])
+        print(data)
+        if data == False:
+            return render_template("defaultTemplateEditor.html", show_button=True, alert_message="An invalid template id was provided")
+        else:
+            data = urllib.parse.unquote(data)
+            return render_template("defaultTemplateEditor.html", show_button=True,formData = data)
     return render_template("defaultTemplateEditor.html",show_button=True)
+
+
+
+@NotificationEditor.route('/save_values', methods=["POST"])
+def saveValuesToDb():
+    newTemplateID=uuid.uuid4()
+    print(newTemplateID)
+    data = request.json['data']
+
+    wasadditionsuccessful = dbhelpers.addNewUUIDtoDB(str(newTemplateID),str(data))
+    if wasadditionsuccessful == False:
+        return render_template("defaultTemplateEditor.html", show_button=True, alert_message="An Error occured when saving template")
+    else:
+        return jsonify({"template_id":newTemplateID})
+
+
 @NotificationEditor.route('/update_preview', methods=["POST"])
 def SanitizeHTML():
     data = request.json
     element = data["FieldValue"]
     allowed_tags = ['b', 'i', 'u', 'em', 'strong', 'a', 'br','span']
     clean_html = bleach.clean(element, tags=allowed_tags, strip=True)
-
     return jsonify({"sanitizedValue":clean_html})
 @NotificationEditor.route("/ChangeLog", methods=["GET"])
 def getChangeLog():
