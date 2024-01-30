@@ -1,23 +1,62 @@
 {% extends "base.html" %}
 {% block head %}
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('HtmlModuleEditor.static',filename='home.css') }}">
-<script src= "{{ url_for('HtmlModuleEditor.static',filename='home.js') }}"></script>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('HtmlModuleEditor.static',filename='htmlModuleEditor.css') }}">
+<script src= "{{ url_for('HtmlModuleEditor.static',filename='ModuleEditor.js') }}"></script>
+
 {% endblock %}
 {% block body %}
-<div class="sidenav">
+    <!-- Custom Alert Box -->
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn btn-primary" id="copyButton">Copy Content</button>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+      <div class="modal-body" id="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+    <a href="javascript:void(0)" class="closebtn" style="display: None" id="SideNavOpen" onclick="openNav()"><span class="fa fa-arrow-circle-right"></span></a>
+
+<div class="sidenav" id="sidenav">
+
    <img src="/static/TDX Graphics/TDX Icon fullcolor_rounded square.png" alt="tdx logo"><span class="titleText">HTML Module Editor v1</span>
+   <a href="javascript:void(0)" class="closebtn" id="SideNavClose" onclick="closeNav()"><span class="fa fa-arrow-circle-left"></span> Collapse</a>
     <a>Module 1 Tiles</a>
    <a id="changeLog" href="/ChangeLog">Change Log</a>
 </div>
-<div class="template-main-content-body">
+<div class="template-main-content-body" id="content-body">
    <div class="template-information-list">
       <!--             Module 1-->
       <div id="defaultTempalteAnchor" class="template-edit">
       <br>
           <h2>Module 1 Card Tiles</h2>
       <br>
+          <h3>Features: </h3>
+          <ul>
+              <li>Does not require the use of un-santized content</li>
+              <li>Auto Adjust to screen width (zoom in and out on page to mimic)</li>
+              <li>Icon and Button Color automatically adjust to client portal colors</li>
+          </ul>
+          <h3>Examples on other Client Portals: </h3>
+          <ul>
+              <li><a href="https://uncw.teamdynamix.com/TDClient/1875/Portal/Home/">University of North Carolina Wilmington</a></li>
+              <li><a href="https://service.providence.edu/TDClient/262/Portal/Home/">Providence College</a></li>
+          </ul>
 
-         <form method="post" action="{{url_for('HtmlModuleEditor.Template1Preview')}}">
+
+         <form method="post" action="{{url_for('HtmlModuleEditor.downloadModule',formid=1)}}" id="customForm1">
          {% for i in range(1, 5) %}
             <!--             Tile 1 -->
             <p>Tile {{ i }} </p>
@@ -25,7 +64,7 @@
                <div class="row g-3">
                   <div class="col">
                      <label for="tile{{ i }}_icon" class="form-label required">Tile {{ i }} Icon</label>
-                     <select class="form-select" aria-label="Default select example" id="tile{{ i }}_icon" name="tile{{ i }}_icon">
+                     <select class="form-select" aria-label="Default select example" id="tile{{ i }}_icon" name="tile{{ i }}_icon" oninput="updateIcon(this.value, 'icon{{ i }}','CardTilesIFrame')">
                         {% for icon in icons %}
                         <option value="{{ icon }}"><i class="{{icon}}"></i> {{ icon }}</option>
                         {% endfor %}
@@ -33,11 +72,11 @@
                   </div>
                   <div class="col">
                      <label for="tile{{ i }}_Title" class="form-label required">Tile {{ i }} Title</label>
-                     <input type="input" required class="form-control" id="tile{{ i }}_Title" name="tile{{ i }}_Title">
+                     <input type="input" required class="form-control" id="tile{{ i }}_Title" name="tile{{ i }}_Title" oninput="updateLivePreview(this.value,'tile{{ i }}title','innerText','CardTilesIFrame')">
                   </div>
                   <div class="col">
                      <label for="tile{{ i }}_SubTitleText" class="form-label required">Tile {{ i }} Secondary Text</label>
-                     <input type="input" required class="form-control" id="tile{{ i }}_SubTitleText" name="tile{{ i }}_SubTitleText">
+                     <input type="input" required class="form-control" id="tile{{ i }}_SubTitleText" name="tile{{ i }}_SubTitleText" oninput="updateLivePreview(this.value,'tile{{ i }}secondaryText','innerText','CardTilesIFrame')">
                   </div>
                </div>
             </div>
@@ -45,26 +84,34 @@
                <div class="row g-3">
                   <div class="col">
                      <label for="tile{{ i }}_ButtonText" class="form-label required">Tile {{ i }} Button Text</label>
-                     <input type="input" required class="form-control" id="tile{{ i }}_ButtonText" name="tile{{ i }}_ButtonText">
+                     <input type="input" required class="form-control" id="tile{{ i }}_ButtonText" name="tile{{ i }}_ButtonText" oninput="updateLivePreview(this.value,'tile{{ i }}button','innerText','CardTilesIFrame')">
                   </div>
                   <div class="col">
                      <label for="tile{{ i }}_ButtonLink" class="form-label required">Tile {{ i }} Button Link</label>
-                     <input type="input" required class="form-control" id="tile{{ i }}_ButtonLink" name="tile{{ i }}_ButtonLink">
+                     <input type="input" required class="form-control" id="tile{{ i }}_ButtonLink" name="tile{{ i }}_ButtonLink" oninput="updateLivePreview(this.value,'tile{{ i }}button','href','CardTilesIFrame')">
                   </div>
                </div>
             </div>
-            <!--             Tile 2 -->
          {% endfor %}
-
-
-
-            <button type="submit" class="btn btn-success">Generate Preview and Code</button>
-            <em style="font-size: 10px;">Opens a New Tab With Preview</em>
+            <button id="btnCardTilesSubmit" type="button" class="btn btn-success" onclick="displayHTMLCode(this.id,'custom1_HTMLModuleBody','CardTilesIFrame',true)">Opens a popup with code</button>
+            <em style="font-size: 10px;">Opens a popup with code</em>
          </form>
       </div>
-      <div class="template-preview">
-         <img src="/static/UncwCardRow.jpg" width="100%">
+      <div class="template-preview" id="cardRow">
+          <iframe id="CardTilesIFrame" src="CardTiles" width="100%" height="100%" ></iframe>
+
       </div>
    </div>
 </div>
+    <script>
+    document.getElementById('copyButton').addEventListener('click', function() {
+    var content = document.getElementById('modal-body').innerText;
+    navigator.clipboard.writeText(content).then(function() {
+        console.log('Content copied to clipboard');
+        // You can also show a small alert or change the button text to indicate that the content was copied.
+    }).catch(function(error) {
+        console.error('Error in copying text: ', error);
+    });
+});
+    </script>
 {% endblock %}

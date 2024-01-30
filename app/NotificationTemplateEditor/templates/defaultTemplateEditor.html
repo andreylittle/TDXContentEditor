@@ -130,7 +130,7 @@
             <div class="QuestionGroup">
                <p>Select what Templates you would like to generate</p>
                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="consolidated_flexCheckTicket" name="consolidated_Ticket_CheckBox" checked>
+                  <input class="form-check-input" type="checkbox" value="" id="consolidated_flexCheckTicket" name="consolidated_Ticket_CheckBox" checked disabled>
                   <label class="form-check-label" for="flexCheckTicket">
                   Generate Ticket Notification Templates
                   </label>
@@ -200,13 +200,13 @@
                <label for="custom2_UpdateText" class="form-label required">Update Text</label>
                <em style="font-size: 10px;"><br>Supports HTML <br> </em>
                <p id="custom2_UpdateText_txtvalue"></p>
-               <input type="input" required class="form-control" id="custom2_UpdateText" name="custom2_UpdateText" placeholder="To update this ticket you may reply to this email or view the status of the ticket by visiting the Solutions Service Portal." oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_updateText'],'innerHTML')">
+               <textarea rows="3" type="input" required class="form-control" id="custom2_UpdateText" name="custom2_UpdateText" placeholder="To update this ticket you may reply to this email or view the status of the ticket by visiting the Solutions Service Portal." oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_updateText'],'innerHTML')"></textarea>
             </div>
             <div class="QuestionGroup">
                <label for="custom2_BaseText" class="form-label required">Bottom Table Text</label>
                <em style="font-size: 10px;"><br>Supports HTML </em>
                <p id="custom2_BaseText_txtvalue"></p>
-               <input type="input" required class="form-control" id="custom2_BaseText" name="custom2_BaseText" placeholder="For additional assistance, please create a new support ticket" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_bottomText','custom2_bottomText_tech'],'innerHTML')">
+                <textarea rows="3" type="input" required class="form-control" id="custom2_BaseText" name="custom2_BaseText" placeholder="For additional assistance, please create a new support ticket" oninput="updateDefaultedPreview(this.value, 'custom2-template-preview', null, null , ['custom2_bottomText','custom2_bottomText_tech'],'innerHTML')"></textarea>
             </div>
             <div class="QuestionGroup">
                <label for="custom2_BaseTextColor" class="form-label">Bottom Text Color</label>
@@ -216,7 +216,7 @@
             <div class="QuestionGroup">
                <p>Select what Templates you would like to generate</p>
                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="custom2_flexCheckTicket" name="custom_2_ticket_checkbox" checked>
+                  <input class="form-check-input" type="checkbox" value="" id="custom2_flexCheckTicket" name="custom_2_ticket_checkbox" checked disabled>
                   <label class="form-check-label" for="flexCheckTicket">
                   Generate Ticket Notification Templates
                   </label>
@@ -263,18 +263,18 @@
                <label for="custom3_SincerelyText" class="form-label required">Sincerely Text</label>
                <em style="font-size: 10px;"><br>Supports HTML <br> </em>
                <p id="custom3_SincerelyText_txtvalue"></p>
-               <input type="input" required class="form-control" id="custom3_SincerelyText" name="custom3_SincerelyText" placeholder="<span style='font-weight: bold'> Digital Strategy &amp; Implementation</span><br> and <span style='font-weight: bold'>Technology Services</span>" oninput="updateDefaultedPreview(this.value, 'custom3-template-preview', null, null , ['custom3_sincerelyText_Requestor','custom3_sincerelyText_TicketingUser'],'innerHTML')">
+               <textarea type="input" rows="3" required class="form-control" id="custom3_SincerelyText" name="custom3_SincerelyText" placeholder="<span style='font-weight: bold'> Digital Strategy &amp; Implementation</span><br> and <span style='font-weight: bold'>Technology Services</span>" oninput="updateDefaultedPreview(this.value, 'custom3-template-preview', null, null , ['custom3_sincerelyText_Requestor','custom3_sincerelyText_TicketingUser'],'innerHTML')"></textarea>
             </div>
             <div class="QuestionGroup">
                <label for="custom3_BaseText" class="form-label required">Bottom Text</label>
                <em style="font-size: 10px;"><br>Supports HTML </em>
                <p id="custom3_BaseText_txtvalue"></p>
-               <input type="input" required class="form-control" id="custom3_BaseText" name="custom3_BaseText" placeholder="<br>Technology Assistance Center<br>(p) 615.269.5956<br>Business hours: 8:00am–4:00pm CT" oninput="updateDefaultedPreview(this.value, 'custom3-template-preview', null, null , ['custom3_Bottom_Requestor','custom3_Bottom_TicketingUser'],'innerHTML')">
+                <textarea type="input" required class="form-control" id="custom3_BaseText" name="custom3_BaseText" placeholder="<br>Technology Assistance Center<br>(p) 615.269.5956<br>Business hours: 8:00am–4:00pm CT" oninput="updateDefaultedPreview(this.value, 'custom3-template-preview', null, null , ['custom3_Bottom_Requestor','custom3_Bottom_TicketingUser'],'innerHTML')"></textarea>
             </div>
             <div class="QuestionGroup">
                <p>Select what Templates you would like to generate</p>
                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="custom3_flexCheckTicket" name="custom_3_ticket_checkbox" checked>
+                  <input class="form-check-input" type="checkbox" value="" id="custom3_flexCheckTicket" name="custom_3_ticket_checkbox" checked required>
                   <label class="form-check-label" for="flexCheckTicket">
                   Generate Ticket Notification Templates
                   </label>
@@ -359,7 +359,7 @@
             <div class="QuestionGroup">
                <p>Select what Templates you would like to generate</p>
                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="custom4_flexCheckTicket" name="custom_4_ticket_checkbox" checked>
+                  <input class="form-check-input" type="checkbox" value="" id="custom4_flexCheckTicket" name="custom_4_ticket_checkbox" checked disabled>
                   <label class="form-check-label" for="flexCheckTicket">
                   Generate Ticket Notification Templates
                   </label>

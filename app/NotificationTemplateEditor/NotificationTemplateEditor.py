@@ -249,18 +249,6 @@ def download_defaultTemplates():
                         file_path = pathlib.Path(root) / file
                         z.write(file_path, arcname=file_path.relative_to(base_path2))
 
-    # with zipfile.ZipFile(data, mode='w') as z:
-    #     for folder in base_path2.iterdir():
-    #         # print(folder)
-    #         z.write(folder)
-    #         for file in folder.iterdir():
-    #             try:
-    #                 for subFile in file.iterdir():
-    #                     z.write(subFile)
-    #             except:
-    #                 pass
-    #             # print(file)
-    #             z.write(file)
 
     data.seek(0)
     return send_file(
