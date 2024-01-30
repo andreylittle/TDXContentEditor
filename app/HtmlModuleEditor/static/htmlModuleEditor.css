@@ -102,24 +102,22 @@ form .QuestionGroup{
     left: 0;
     bottom: 60px;
 }
-.bootstrap3{
 
+
+body #SideNavOpen{
+    position: fixed;
+    background-color: #ebe9f5;
+    color: #8332a7;
+    width: 35px;
+    height: 35px;
+    padding: 2px 0px 0px 7px;
+    border-radius: 50%;
+    font-size: 20px;
+    top: 70px;
+    left: 15px;
+    display: flex; /* Add this line */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-decoration: none; /* Optional: Removes underline from the link */
 }
 
-.bootstrap3 .btn-primary{
-    color:#fff;
-    background-color:#337ab7;
-    border-color:#2e6da4
-}
-.bootstrap3 .btn-default{
-    color: #2b2b2b;
-    background-color: #fff;
-    border-color: #ccc;
-}
-.bootstrap3 .shadow-box{
-    box-shadow: 0 1px 12px -3px #000;
-}
-.bootstrap3 .panel-body{
-    padding: 15px;
-
-}

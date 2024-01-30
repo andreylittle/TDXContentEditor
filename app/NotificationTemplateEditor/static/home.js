@@ -189,9 +189,7 @@ document.getElementById("modal-body").innerHTML = `
 }
 
 
-function closeAlert() {
-    document.getElementById('customAlert').style.display = 'none';
-}
+
 window.onload = function() {
     // Function to get the value of a query parameter by name
     function getQueryParam(name) {
