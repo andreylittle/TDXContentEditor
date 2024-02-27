@@ -17,16 +17,22 @@ NotificationEditor = Blueprint("NotificationEditor",__name__, template_folder="t
 def getHome():
     return render_template("defaultTemplateEditor.html" ,show_button=True)
 
+
+#This is going to be responsible for looking to see if there is a generated template
+#is present in the request url
 @NotificationEditor.route('/process', methods=["GET"])
 def loadSavedValues():
     requestParams = request.args.to_dict()
     print(requestParams)
+    #Checks to see if no request params
     if not requestParams:
         print("No Arguments Provided")
         return render_template("defaultTemplateEditor.html", show_button=True, alert_message="No template Id was provided")
-    if 'template_id' not in requestParams:
+   #This checks to see if template_id is not in the params
+     if 'template_id' not in requestParams:
         print("No Valid Params Sent")
         return render_template("defaultTemplateEditor.html", show_button=True, alert_message="No template Id was provided")
+    #Checks for an empty template_id
     if 'template_id' in requestParams and requestParams['template_id'] =='':
         print("template id was empty")
         return render_template("defaultTemplateEditor.html", show_button=True, alert_message="No template Id was provided")
@@ -42,7 +48,9 @@ def loadSavedValues():
     return render_template("defaultTemplateEditor.html",show_button=True)
 
 
-
+#Saves thre current values on all forms, specifically to the DB and returns a 
+#template id to a js function and then presents it to the user
+#<TODO> When a user already has a template ID present that is valid and already in the DB, update it so that I am not re creating more and more template strings
 @NotificationEditor.route('/save_values', methods=["POST"])
 def saveValuesToDb():
     newTemplateID=uuid.uuid4()
@@ -55,7 +63,8 @@ def saveValuesToDb():
     else:
         return jsonify({"template_id":newTemplateID})
 
-
+#Used specifically for sanitizing fields
+#<TODO> Specifically change this route to only be used when the page is loaded from 
 @NotificationEditor.route('/update_preview', methods=["POST"])
 def SanitizeHTML():
     data = request.json
