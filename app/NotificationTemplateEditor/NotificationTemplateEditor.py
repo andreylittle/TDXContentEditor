@@ -9,7 +9,6 @@ import bleach
 import urllib.parse
 import uuid
 from app.NotificationTemplateEditor import dbhelpers
-
 NotificationEditor = Blueprint("NotificationEditor",__name__, template_folder="templates", static_url_path="TDXContentEditor/app/NotificationTemplateEditor/static", static_folder=os.path.join(os.getcwd() +r"\app\NotificationTemplateEditor\static"))
 
 
@@ -259,14 +258,15 @@ def download_defaultTemplates():
     )
 
 
+
+
 #Working Direcvtory is Base Template Folder contains where base ticket templates exists this is source
 #baseExportDirectory is the directory where I should
 #Destination will be the Ticket Export Directory
 #Fields will be used for the find/replace in the new exported directory
 def get_ticket_templates(workingDirectory, baseExportDirectory, MainExportDirectory,fields):
 
-    shutil.copytree(src=workingDirectory, dst= MainExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
-                    ignore_dangling_symlinks=False, dirs_exist_ok=False)
+    copyDirectory(workingDirectory, MainExportDirectory)
     all_files = os.listdir(MainExportDirectory)
 
     for file in all_files:
@@ -284,8 +284,7 @@ def get_ticket_templates(workingDirectory, baseExportDirectory, MainExportDirect
 
 def get_kb_templates(workingDirectory, baseExportDirectory, MainExportDirectory,fields):
 
-    shutil.copytree(src=workingDirectory, dst= MainExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
-                    ignore_dangling_symlinks=False, dirs_exist_ok=False)
+    copyDirectory(workingDirectory, MainExportDirectory)
 
     all_files = os.listdir(MainExportDirectory)
 
@@ -300,9 +299,7 @@ def get_kb_templates(workingDirectory, baseExportDirectory, MainExportDirectory,
     pass
 def get_project_templates(workingDirectory, baseExportDirectory, MainExportDirectory,fields):
 
-    shutil.copytree(src=workingDirectory, dst= MainExportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2,
-                    ignore_dangling_symlinks=False, dirs_exist_ok=False)
-
+    copyDirectory(workingDirectory, MainExportDirectory)
     all_folders = os.listdir(MainExportDirectory)
 
     for Folder in all_folders:
@@ -321,3 +318,6 @@ def get_project_templates(workingDirectory, baseExportDirectory, MainExportDirec
 
 
     pass
+
+def copyDirectory(workignDirectory, exportDirectory):
+    shutil.copytree(src=workignDirectory, dst=exportDirectory, symlinks=False, ignore=None, copy_function=shutil.copy2, ignore_dangling_symlinks=False, dirs_exist_ok=False)

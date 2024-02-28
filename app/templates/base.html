@@ -17,6 +17,13 @@
 {% include "topnav.html" %}
 
 {% block body %}{% endblock %}
+<script data-tdbot='11e16d75-b986-409a-a6ae-3f4652c79bc6' data-name='tdbot' data-host='https://us1.teamdynamix.com/tdapp/' data-customer='13d79f7c-a00b-4b22-8c46-849d7e4606c4' data-auth='e0+cxpjuXIkGTG2ozM1w8wq/9JwV/icsQgaDwKC4qT4=' src='https://us1.teamdynamix.com/tdapp/bots/web/js/tdbot.min.js'></script>
+<script>
 
+// Initialize the TDBot
+var bot = new TDBot.WebBot({ host: "https://us1.teamdynamix.com/tdapp/", customer: "13d79f7c-a00b-4b22-8c46-849d7e4606c4", botPId: "11e16d75-b986-409a-a6ae-3f4652c79bc6", version: "-1", auth: "e0+cxpjuXIkGTG2ozM1w8wq/9JwV/icsQgaDwKC4qT4=", hostAuth: "{{hostauth}}", authenticated: "{{authed}}" });
+
+
+</script>
 </body>
 </html>
