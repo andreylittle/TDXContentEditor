@@ -4,6 +4,9 @@
 <script src= "{{ url_for('NotificationEditor.static',filename='home.js') }}"></script>
 {% endblock %}
 {% block body %}
+
+
+
     <!-- Custom Alert Box -->
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -94,6 +97,8 @@
             <button type="submit" class="btn btn-success">Generate Notification Templates</button>
             <em style="font-size: 10px;">Downloads a zip file w/ txt documents containing new styling</em>
          </form>
+
+
       </div>
       <div class="template-preview">
          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
@@ -216,11 +221,18 @@
             <div class="QuestionGroup">
                <p>Select what Templates you would like to generate</p>
                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="custom2_flexCheckTicket" name="custom_2_ticket_checkbox" checked disabled>
-                  <label class="form-check-label" for="flexCheckTicket">
+                  <input class="form-check-input" type="checkbox" value="" id="custom2_flexCheckTicket" name="custom_2_ticket_checkbox" checked >
+                  <label class="form-check-label" for="custom2_flexCheckTicket">
                   Generate Ticket Notification Templates
                   </label>
+
                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="custom_2_project_checkbox" name="custom_2_project_checkbox"  >
+                    <label class="form-check-label" for="custom_2_project_checkbox">
+                        Generate Project Notification Templates
+                    </label>
+                </div>
             </div>
             <button type="submit" class="btn btn-success">Generate Notification Templates</button>
             <em style="font-size: 10px;">Downloads a zip file w/ txt documents containing new styling</em>
@@ -466,20 +478,10 @@ for (var i = 0; i < forms.length; i++) {
 {% endif %}
 
 
-    const submitButtons = document.querySelectorAll('button[type="submit"]');
 
-// Add an event listener to each submit button
-submitButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-        // Prevent the default form submission behavior
-   document.getElementById("staticBackdropLabel").innerText = 'Success';
-   document.getElementById("modal-body").innerHTML = `Downloading Files`;
 
-   var DownloadMessageElement = document.getElementById('staticBackdrop');
-   var DownloadMessage = new bootstrap.Modal(DownloadMessageElement); // Create a Bootstrap Modal instance
-   DownloadMessage.show(); // Show the modal
-    });
-});
+
+
 </script>
 
 
